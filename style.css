@@ -134,7 +134,7 @@ h2 {
     font-weight: bold;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     transition: color 0.3s;
 }
 
@@ -143,8 +143,8 @@ h2 {
 }
 
 .icono-red {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     vertical-align: middle;
     margin-right: 5px;
 }
