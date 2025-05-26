@@ -143,10 +143,10 @@ h2 {
 }
 
 .icono-red {
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
     vertical-align: middle;
-    filter: brightness(1.2);
+    margin-right: 5px;
 }
 /* FOOTER */
 footer {
