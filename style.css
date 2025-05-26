@@ -132,6 +132,9 @@ h2 {
     color: #00f0ff;
     text-decoration: none;
     font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     transition: color 0.3s;
 }
 
@@ -140,10 +143,10 @@ h2 {
 }
 
 .icono-red {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     vertical-align: middle;
-    margin-right: 8px;
+    filter: brightness(1.2);
 }
 /* FOOTER */
 footer {
