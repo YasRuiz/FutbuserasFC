@@ -129,6 +129,7 @@ h2 {
 }
 
 .instagram-link {
+    font-size: 1.2em;
     color: #00f0ff;
     text-decoration: none;
     font-weight: bold;
@@ -143,8 +144,8 @@ h2 {
 }
 
 .icono-red {
-    width: 24px; 
-    height: 24px;
+    width: 36px; 
+    height: 36px;
     vertical-align: middle;
     margin-right: 8px;
 }
