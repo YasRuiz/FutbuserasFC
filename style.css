@@ -129,13 +129,13 @@ h2 {
 }
 
 .instagram-link {
-    font-size: 1.2em;
+    font-size: 1.3em;
     color: #00f0ff;
     text-decoration: none;
     font-weight: bold;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     transition: color 0.3s;
 }
 
@@ -144,11 +144,12 @@ h2 {
 }
 
 .icono-red {
-    width: 36px; 
-    height: 36px;
-    vertical-align: middle;
-    margin-right: 8px;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-right: 6px;
 }
+
 
 /* FOOTER */
 footer {
