@@ -118,6 +118,7 @@ h2 {
 
 .uniforme img {
     width: 100%;
+    max-width: 100%;
     border: 2px solid #00f0ff;
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
@@ -128,6 +129,7 @@ h2 {
     margin: 15px 0 10px;
 }
 
+/* INSTAGRAM */
 .instagram-link {
     font-size: 1.3em;
     color: #00f0ff;
@@ -147,9 +149,7 @@ h2 {
     width: 40px;
     height: 40px;
     object-fit: contain;
-    margin-right: 6px;
 }
-
 
 /* FOOTER */
 footer {
