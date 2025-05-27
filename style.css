@@ -151,6 +151,25 @@ h2 {
     object-fit: contain;
 }
 
+#galeria {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.galeria img {
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid #00f0ff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
 /* FOOTER */
 footer {
     text-align: center;
