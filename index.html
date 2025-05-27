@@ -7,134 +7,6 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background-color: #111;
-      color: #fff;
-    }
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      position: absolute;
-      top: 25px;
-      right: 25px;
-      z-index: 1001;
-    }
-    .menu-toggle span {
-      height: 4px;
-      width: 30px;
-      background: #00f0ff;
-      margin: 5px 0;
-      border-radius: 2px;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      background-color: #222;
-      padding: 15px 0;
-      transition: max-height 0.3s ease;
-    }
-    nav a {
-      color: #00f0ff;
-      text-decoration: none;
-      margin: 0 20px;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #ff00cc;
-    }
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        max-height: 0;
-        overflow: hidden;
-      }
-      nav.active {
-        max-height: 500px;
-      }
-      .menu-toggle {
-        display: flex;
-      }
-    }
-    .carousel {
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-    }
-    .carousel img {
-      width: 100%;
-      display: none;
-    }
-    .carousel img.active {
-      display: block;
-    }
-    .iconos-sociales {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    .iconos-sociales a img {
-      width: 40px;
-      height: 40px;
-    }
-    .uniformes-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 40px;
-      margin: 40px auto;
-      max-width: 800px;
-    }
-    .uniforme {
-      text-align: center;
-      transition: transform 0.3s;
-    }
-    .uniforme:hover {
-      transform: scale(1.05);
-    }
-    .uniforme img {
-      width: 100%;
-      max-width: 300px;
-      border: 2px solid #00f0ff;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,255,255,0.2);
-    }
-    .uniforme h3 {
-      color: #ff00cc;
-      margin-top: 10px;
-    }
-    .uniforme p {
-      color: #ccc;
-      font-size: 0.95em;
-      padding: 0 10px;
-    }
-    .btn-galeria, nav a, button {
-      display: inline-block;
-      padding: 12px 24px;
-      background-color: #00f0ff;
-      color: #111;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s, transform 0.3s, color 0.3s;
-    }
-    .btn-galeria:hover, nav a:hover, button:hover {
-      background-color: #ff00cc;
-      color: #fff;
-      transform: scale(1.05);
-    }
-    footer {
-      text-align: center;
-      background-color: #000;
-      padding: 20px;
-      color: #777;
-    }
-  </style>
 </head>
 <body>
   <header>
@@ -142,11 +14,6 @@
     <h1 style="text-align:center; color:#ff00cc;">Futbuseras FC</h1>
     <p style="text-align:center;">Equipo femenino de fútbol - La Florida, Santiago de Chile</p>
     <p class="lema" style="text-align:center; color:#00f0ff;">"Equipo en la cancha, líderes en la ruta"</p>
-    <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
   </header>
 
   <nav>
@@ -154,14 +21,16 @@
     <a href="#historia">Historia</a>
     <a href="#plantel">Plantel</a>
     <a href="#uniformes">Uniformes</a>
+    <a href="#galeria">Galería</a>
     <a href="#contacto">Contáctanos</a>
   </nav>
 
   <section id="inicio">
     <div class="carousel">
-      <img src="Equipo-foto-1.jpg" class="active" alt="Futbuseras 1">
-      <img src="foto2.jpg" alt="Futbuseras 2">
-      <img src="foto3.jpg" alt="Futbuseras 3">
+      <img src="Equipo-foto-1.jpg" class="active" alt="Foto equipo Futbuseras FC">
+      <img src="Screenshot_20250527_053708 (1).jpg" alt="Entrenamiento Futbuseras">
+      <img src="Screenshot_20250527_053716 (1).jpg" alt="Celebración de gol Futbuseras">
+      <img src="Screenshot_20250527_053736 (1).jpg" alt="Equipo en cancha">
     </div>
   </section>
 
@@ -198,6 +67,16 @@
     </div>
     <div style="text-align: center; margin-top: 20px;">
       <a href="#galeria" class="btn-galeria">Ver Galería de Fotos</a>
+    </div>
+  </section>
+
+  <section id="galeria">
+    <h2>Galería de Fotos</h2>
+    <div class="fotos">
+      <img src="Equipo-foto-1.jpg" alt="Foto equipo Futbuseras FC">
+      <img src="Screenshot_20250527_053708 (1).jpg" alt="Entrenamiento Futbuseras">
+      <img src="Screenshot_20250527_053716 (1).jpg" alt="Celebración de gol Futbuseras">
+      <img src="Screenshot_20250527_053736 (1).jpg" alt="Equipo en cancha">
     </div>
   </section>
 
