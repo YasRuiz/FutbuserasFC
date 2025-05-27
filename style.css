@@ -22,3 +22,15 @@ img { max-width: 100%; height: auto; border-radius: 10px; }
 
 .iconos-sociales img:hover { transform: scale(1.2); }
 
+.carousel { width: 100%; overflow: hidden; position: relative; }
+
+.carousel img { width: 100%; display: none; transition: opacity 1s ease-in-out; }
+
+.carousel img.active { display: block; opacity: 1; }
+
+#galeria { padding: 40px 20px; max-width: 1000px; margin: auto; text-align: center; }
+
+#galeria img { width: 100%; max-width: 300px; margin: 10px; border: 2px solid #00f0ff; border-radius: 10px; transition: transform 0.3s, box-shadow 0.3s; }
+
+#galeria img:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,255,255,0.3); }
+
