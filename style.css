@@ -1,68 +1,215 @@
-body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: #111; color: #fff; }
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #111;
+  color: #fff;
+}
 
-header { padding: 20px; text-align: center; background: linear-gradient(90deg, #6a00f4, #00f0ff); }
+/* ENCABEZADO */
+header {
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(90deg, #6a00f4, #00f0ff);
+}
+.logo-header {
+  max-width: 120px;
+  display: block;
+  margin: auto;
+}
+h1 {
+  margin: 10px 0 5px;
+  color: #ff00cc;
+}
+.lema {
+  font-style: italic;
+  color: #ff00cc;
+}
 
-.logo-header { max-width: 120px; display: block; margin: auto; }
+/* MENÚ HAMBURGUESA */
+.menu {
+  background-color: #222;
+}
+.menu-toggle {
+  display: none;
+}
+.menu-icon {
+  font-size: 1.8em;
+  color: #00f0ff;
+  padding: 15px;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+}
+.menu-links {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+.menu-links li a {
+  display: block;
+  padding: 12px 20px;
+  color: #00f0ff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s, transform 0.3s;
+}
+.menu-links li a:hover {
+  color: #ff00cc;
+  transform: scale(1.1);
+}
+.menu-toggle:checked + .menu-icon + .menu-links {
+  display: block;
+}
 
-.menu { background-color: #222; position: relative; }
+/* CARRUSEL */
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.carousel img {
+  width: 100%;
+  display: none;
+  transition: opacity 1s ease-in-out;
+}
+.carousel img.active {
+  display: block;
+  opacity: 1;
+}
 
-.menu-toggle { display: none; }
+/* SECCIONES GENERALES */
+section {
+  padding: 40px 20px;
+}
+h2 {
+  color: #ff00cc;
+  text-align: center;
+  margin-top: 0;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: auto;
+}
+ul li {
+  padding: 8px;
+  border-bottom: 1px solid #333;
+}
 
-.menu-icon { font-size: 1.8em; color: #00f0ff; padding: 15px; cursor: pointer; display: block; text-align: center; }
+/* UNIFORMES */
+.uniformes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px;
+}
+.uniforme {
+  max-width: 300px;
+  text-align: center;
+}
+.uniforme img {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid #00f0ff;
+  box-shadow: 0 0 10px rgba(0,255,255,0.2);
+}
 
-.menu-links { display: none; list-style: none; padding: 0; margin: 0; text-align: center; }
+/* GALERÍA */
+.fotos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+.fotos img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  border: 2px solid #00f0ff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.fotos img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0,255,255,0.3);
+}
 
-.menu-links li a { display: block; padding: 12px 20px; color: #00f0ff; text-decoration: none; font-weight: bold; transition: color 0.3s, transform 0.3s; }
+/* BOTÓN GALERÍA */
+.btn-galeria {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #00f0ff;
+  color: #111;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s;
+}
+.btn-galeria:hover {
+  background-color: #ff00cc;
+  color: #fff;
+  transform: scale(1.05);
+}
+.text-center {
+  text-align: center;
+}
 
-.menu-links li a:hover { color: #ff00cc; transform: scale(1.1); }
+/* FORMULARIO */
+form {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+}
+input, textarea, button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1em;
+}
+input, textarea {
+  background-color: #222;
+  color: #fff;
+}
+button {
+  background-color: #00f0ff;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+button:hover {
+  background-color: #ff00cc;
+  color: #fff;
+  transform: scale(1.05);
+}
 
-.menu-toggle:checked + .menu-icon + .menu-links { display: block; }
+/* ICONOS REDES SOCIALES */
+.iconos-sociales {
+  text-align: center;
+  margin-top: 20px;
+}
+.iconos-sociales img {
+  width: 28px;
+  height: 28px;
+  margin: 0 10px;
+  transition: transform 0.3s;
+}
+.iconos-sociales img:hover {
+  transform: scale(1.2);
+}
 
-h2 { color: #ff00cc; text-align: center; margin-top: 40px; }
-
-ul { list-style: none; padding: 0; max-width: 600px; margin: auto; }
-
-ul li { padding: 8px; border-bottom: 1px solid #333; }
-
-.carousel { width: 100%; overflow: hidden; position: relative; }
-
-.carousel img { width: 100%; display: none; transition: opacity 1s ease-in-out; }
-
-.carousel img.active { display: block; opacity: 1; }
-
-.uniformes-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 20px; }
-
-.uniforme { max-width: 300px; text-align: center; }
-
-.uniforme img { width: 100%; border-radius: 10px; border: 2px solid #00f0ff; box-shadow: 0 0 10px rgba(0,255,255,0.2); }
-
-.btn-galeria { display: inline-block; padding: 10px 20px; background-color: #00f0ff; color: #111; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.3s, transform 0.3s; }
-
-.btn-galeria:hover { background-color: #ff00cc; color: #fff; transform: scale(1.05); }
-
-.fotos { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
-
-.fotos img { width: 100%; max-width: 300px; border-radius: 10px; border: 2px solid #00f0ff; transition: transform 0.3s, box-shadow 0.3s; }
-
-.fotos img:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,255,255,0.3); }
-
-form { max-width: 500px; margin: auto; display: flex; flex-direction: column; gap: 15px; padding: 20px; }
-
-input, textarea, button { padding: 10px; border: none; border-radius: 5px; font-family: inherit; font-size: 1em; }
-
-input, textarea { background-color: #222; color: #fff; }
-
-button { background-color: #00f0ff; color: #111; font-weight: bold; cursor: pointer; transition: background-color 0.3s, transform 0.3s; }
-
-button:hover { background-color: #ff00cc; color: #fff; transform: scale(1.05); }
-
-.iconos-sociales { text-align: center; margin-top: 20px; }
-
-.iconos-sociales img { width: 28px; height: 28px; margin: 0 10px; transition: transform 0.3s; }
-
-.iconos-sociales img:hover { transform: scale(1.2); }
-
-footer { background-color: #000; text-align: center; padding: 20px; color: #777; }
-
-.text-center { text-align: center; }
-
+/* PIE DE PÁGINA */
+footer {
+  background-color: #000;
+  text-align: center;
+  padding: 20px;
+  color: #777;
+}
