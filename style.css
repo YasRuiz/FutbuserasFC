@@ -1,36 +1,184 @@
-body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: #111; color: #fff; }
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #111;
+  color: #fff;
+}
 
-h2 { color: #ff00cc; text-align: center; }
+header {
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(90deg, #6a00f4, #00f0ff);
+}
 
-form { max-width: 500px; margin: auto; display: flex; flex-direction: column; gap: 10px; }
+nav {
+  background-color: #222;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
-input, textarea, button { padding: 10px; border: none; border-radius: 5px; font-family: inherit; font-size: 1em; }
+nav a {
+  color: #00f0ff;
+  text-decoration: none;
+  padding: 15px 20px;
+  font-weight: bold;
+  transition: color 0.3s, transform 0.3s;
+}
 
-input, textarea { background-color: #222; color: #fff; }
+nav a:hover {
+  color: #ff00cc;
+  transform: scale(1.1);
+}
 
-button { background-color: #00f0ff; color: #111; cursor: pointer; font-weight: bold; transition: background-color 0.3s, transform 0.3s; }
+h2 {
+  color: #ff00cc;
+  text-align: center;
+  margin-top: 40px;
+}
 
-button:hover { background-color: #ff00cc; color: #fff; transform: scale(1.05); }
+ul {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: auto;
+}
 
-ul { list-style: none; padding: 0; max-width: 600px; margin: auto; }
+ul li {
+  padding: 8px;
+  border-bottom: 1px solid #333;
+}
 
-ul li { padding: 8px; border-bottom: 1px solid #333; }
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
 
-img { max-width: 100%; height: auto; border-radius: 10px; }
+.carousel img {
+  width: 100%;
+  display: none;
+  transition: opacity 1s ease-in-out;
+}
 
-.iconos-sociales img { transition: transform 0.3s; }
+.carousel img.active {
+  display: block;
+  opacity: 1;
+}
 
-.iconos-sociales img:hover { transform: scale(1.2); }
+.uniformes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px;
+}
 
-.carousel { width: 100%; overflow: hidden; position: relative; }
+.uniforme {
+  max-width: 300px;
+  text-align: center;
+}
 
-.carousel img { width: 100%; display: none; transition: opacity 1s ease-in-out; }
+.uniforme img {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid #00f0ff;
+  box-shadow: 0 0 10px rgba(0,255,255,0.2);
+}
 
-.carousel img.active { display: block; opacity: 1; }
+.btn-galeria {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #00f0ff;
+  color: #111;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s;
+}
 
-#galeria { padding: 40px 20px; max-width: 1000px; margin: auto; text-align: center; }
+.btn-galeria:hover {
+  background-color: #ff00cc;
+  color: #fff;
+  transform: scale(1.05);
+}
 
-#galeria img { width: 100%; max-width: 300px; margin: 10px; border: 2px solid #00f0ff; border-radius: 10px; transition: transform 0.3s, box-shadow 0.3s; }
+.fotos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
 
-#galeria img:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,255,255,0.3); }
+.fotos img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  border: 2px solid #00f0ff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
 
+.fotos img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0,255,255,0.3);
+}
+
+form {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+}
+
+input, textarea, button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1em;
+}
+
+input, textarea {
+  background-color: #222;
+  color: #fff;
+}
+
+button {
+  background-color: #00f0ff;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: #ff00cc;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.iconos-sociales {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.iconos-sociales img {
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+  transition: transform 0.3s;
+}
+
+.iconos-sociales img:hover {
+  transform: scale(1.2);
+}
+
+footer {
+  background-color: #000;
+  text-align: center;
+  padding: 20px;
+  color: #777;
+}
