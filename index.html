@@ -8,32 +8,6 @@
   <link rel="icon" href="img/favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<script>
-  document.querySelectorAll('.menu-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      document.getElementById('menu-toggle').checked = false;
-    });
-  });
-</script>
-<script>
-  const toggle = document.getElementById('menu-toggle');
-  const menuLinks = document.querySelector('.menu-links');
-  document.querySelectorAll('.menu-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      toggle.checked = false;
-    });
-  });
-  document.addEventListener('click', function (e) {
-    if (
-      toggle.checked &&
-      !e.target.closest('.menu-links') &&
-      !e.target.closest('.menu-icon') &&
-      e.target !== toggle
-    ) {
-      toggle.checked = false;
-    }
-  });
-</script>
 <body>
   <header>
     <img src="img/Logo-Futbuseras-FC.jpg" alt="Logo Futbuseras FC" class="logo-header">
@@ -133,7 +107,9 @@
     <p>&copy; 2025 Futbuseras FC - Todos los derechos reservados</p>
   </footer>
 
+  <!-- Scripts -->
   <script>
+    // Carrusel automático
     const images = document.querySelectorAll('.carousel img');
     let index = 0;
     function showNextImage() {
@@ -142,6 +118,27 @@
       images[index].classList.add('active');
     }
     setInterval(showNextImage, 3000);
+
+    // Cerrar menú al hacer clic fuera o en enlaces
+    const toggle = document.getElementById('menu-toggle');
+    const menuLinks = document.querySelector('.menu-links');
+
+    document.querySelectorAll('.menu-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.checked = false;
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (
+        toggle.checked &&
+        !e.target.closest('.menu-links') &&
+        !e.target.closest('.menu-icon') &&
+        e.target !== toggle
+      ) {
+        toggle.checked = false;
+      }
+    });
   </script>
 </body>
 </html>
