@@ -3,6 +3,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   background-color: #111;
   color: #fff;
+  line-height: 1.6;
 }
 
 /* ENCABEZADO */
@@ -46,6 +47,7 @@ h1 {
   padding: 0;
   margin: 0;
   text-align: center;
+  transition: max-height 0.5s ease;
 }
 .menu-links li a {
   display: block;
@@ -71,6 +73,8 @@ h1 {
 }
 .carousel img {
   width: 100%;
+  max-height: 400px;
+  object-fit: cover;
   display: none;
   transition: opacity 1s ease-in-out;
 }
@@ -82,6 +86,9 @@ h1 {
 /* SECCIONES GENERALES */
 section {
   padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: justify;
 }
 h2 {
   color: #ff00cc;
@@ -129,6 +136,8 @@ ul li {
 .fotos img {
   width: 100%;
   max-width: 300px;
+  max-height: 220px;
+  object-fit: cover;
   border-radius: 10px;
   border: 2px solid #00f0ff;
   transition: transform 0.3s, box-shadow 0.3s;
