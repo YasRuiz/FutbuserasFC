@@ -15,6 +15,25 @@
     });
   });
 </script>
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menuLinks = document.querySelector('.menu-links');
+  document.querySelectorAll('.menu-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.checked = false;
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (
+      toggle.checked &&
+      !e.target.closest('.menu-links') &&
+      !e.target.closest('.menu-icon') &&
+      e.target !== toggle
+    ) {
+      toggle.checked = false;
+    }
+  });
+</script>
 <body>
   <header>
     <img src="img/Logo-Futbuseras-FC.jpg" alt="Logo Futbuseras FC" class="logo-header">
