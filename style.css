@@ -90,7 +90,7 @@ h1 {
 /* CARRUSEL */
 .carousel {
   width: 100%;
-  max-height: 300px;
+  height: auto;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -99,10 +99,9 @@ h1 {
 }
 
 .carousel img {
-  max-height: 300px;
-  width: auto;
+  width: 100%;
   height: auto;
-  max-width: 100%;
+  max-height: 400px;
   object-fit: contain;
   display: none;
   transition: opacity 1s ease-in-out;
