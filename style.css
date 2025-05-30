@@ -278,6 +278,7 @@ footer {
   animation: saltar 1.2s ease-in-out infinite, girar 2s linear infinite;
 }
 
+/* ESTELAS MULTIPLES */
 .estela {
   position: absolute;
   top: 30px;
@@ -288,9 +289,13 @@ footer {
   background: linear-gradient(90deg, rgba(255,0,204,0.6), transparent);
   box-shadow: 0 0 12px rgba(255,0,204,0.7);
   filter: blur(4px);
-  animation: estela-humo 0.5s ease-out infinite;
   z-index: 0;
+  animation: estela-humo 0.6s ease-out infinite;
 }
+
+.estela-1 { animation-delay: 0s; }
+.estela-2 { animation-delay: 0.2s; }
+.estela-3 { animation-delay: 0.4s; }
 
 @keyframes estela-humo {
   0% {
@@ -299,7 +304,7 @@ footer {
   }
   100% {
     opacity: 0;
-    transform: scaleX(1.8) translateX(25px);
+    transform: scaleX(2) translateX(30px);
   }
 }
 
