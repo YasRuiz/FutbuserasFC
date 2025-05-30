@@ -252,3 +252,37 @@ footer {
   padding: 20px;
   color: #777;
 }
+/* PELOTA ANIMADA EN HEADER */
+.pelota-container {
+  position: absolute;
+  top: 60px;
+  left: -80px;
+  width: 60px;
+  height: 60px;
+  z-index: 0;
+  animation: moverPelota 10s linear infinite;
+}
+
+.pelota {
+  width: 60px;
+  height: 60px;
+  animation: saltar 1s ease-in-out infinite, girar 2s linear infinite;
+}
+
+/* Movimiento horizontal */
+@keyframes moverPelota {
+  0% { left: -100px; }
+  100% { left: 100%; }
+}
+
+/* Salto */
+@keyframes saltar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Giro */
+@keyframes girar {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
