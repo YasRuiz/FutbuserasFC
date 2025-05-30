@@ -252,14 +252,13 @@ footer {
   padding: 20px;
   color: #777;
 }
-/* CONTENEDOR PARA POSICIONAR LA PELOTA ENTRE TÍTULO Y LEMA */
+/* PELOTA ENTRE TÍTULO Y LEMA */
 .pelota-wrapper {
   position: relative;
   width: 100%;
-  height: 70px;
+  height: 60px;
   overflow: visible;
   margin: 10px 0;
-  z-index: 0;
 }
 
 .pelota-container {
@@ -268,7 +267,7 @@ footer {
   left: -80px;
   width: 60px;
   height: 60px;
-  animation: moverPelota 8s linear infinite;
+  animation: moverPelota 6s linear infinite;
   z-index: 1;
 }
 
@@ -276,19 +275,19 @@ footer {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  animation: saltar 1.4s ease-in-out infinite, girar 2s linear infinite;
+  animation: saltar 1.2s ease-in-out infinite, girar 2s linear infinite;
 }
 
-/* ESTELA DE HUMO MORADO */
+/* ESTELA de Humo Morado */
 .estela {
   position: absolute;
-  top: 20px;
+  top: 30px;
   left: -20px;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
-  background: radial-gradient(rgba(255, 0, 204, 0.4), transparent 70%);
-  filter: blur(6px);
+  background: radial-gradient(rgba(255, 0, 204, 0.3), transparent 70%);
+  filter: blur(5px);
   animation: estela-humo 0.6s ease-out infinite;
   z-index: 0;
 }
@@ -301,7 +300,7 @@ footer {
 
 @keyframes saltar {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+  50% { transform: translateY(-25px); }
 }
 
 @keyframes girar {
