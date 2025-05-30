@@ -278,18 +278,29 @@ footer {
   animation: saltar 1.2s ease-in-out infinite, girar 2s linear infinite;
 }
 
-/* ESTELA de Humo Morado */
 .estela {
   position: absolute;
   top: 30px;
   left: -20px;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: radial-gradient(rgba(255, 0, 204, 0.3), transparent 70%);
-  filter: blur(5px);
-  animation: estela-humo 0.6s ease-out infinite;
+  width: 40px;
+  height: 20px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, rgba(255,0,204,0.6), transparent);
+  box-shadow: 0 0 12px rgba(255,0,204,0.7);
+  filter: blur(4px);
+  animation: estela-humo 0.5s ease-out infinite;
   z-index: 0;
+}
+
+@keyframes estela-humo {
+  0% {
+    opacity: 0.8;
+    transform: scaleX(1) translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(1.8) translateX(25px);
+  }
 }
 
 /* ANIMACIONES */
