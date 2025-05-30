@@ -252,48 +252,50 @@ footer {
   padding: 20px;
   color: #777;
 }
-/* ANIMACIÓN PELOTA + RASTRO */
+/* PELOTA ANIMADA */
 .pelota-container {
   position: absolute;
   top: 60px;
   left: -100px;
   width: 60px;
   height: 60px;
-  z-index: 0;
-  animation: moverPelota 10s linear infinite;
+  z-index: 1;
+  animation: moverPelota 8s linear infinite;
+  pointer-events: none;
 }
 
 .pelota {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  animation: saltar 1s ease-in-out infinite, girar 2s linear infinite;
+  animation: saltar 1.2s ease-in-out infinite, girar 1.5s linear infinite;
+  opacity: 0.95;
 }
 
-/* Estela blanca tipo rastro */
+/* ESTELA DE VELOCIDAD */
 .estela {
   position: absolute;
-  top: 18px;
-  left: -80px;
-  width: 80px;
+  top: 20px;
+  left: -40px;
+  width: 20px;
   height: 20px;
-  background: linear-gradient(to right, rgba(255,255,255,0.6), transparent);
-  border-radius: 10px;
-  filter: blur(8px);
-  transform: rotate(5deg);
-  animation: humo 1s ease-in-out infinite;
+  border-radius: 50%;
+  background: radial-gradient(rgba(255,255,255,0.4), transparent 70%);
+  filter: blur(6px);
+  animation: estela-humo 0.6s ease-out infinite;
+  z-index: 0;
 }
 
-/* Movimiento de la pelota horizontal */
+/* Movimiento horizontal de la pelota */
 @keyframes moverPelota {
   0% { left: -100px; }
   100% { left: 100%; }
 }
 
-/* Movimiento vertical (salto) */
+/* Salto */
 @keyframes saltar {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+  50% { transform: translateY(-25px); }
 }
 
 /* Giro */
@@ -302,8 +304,14 @@ footer {
   100% { transform: rotate(360deg); }
 }
 
-/* Animación de la estela como humo que vibra */
-@keyframes humo {
-  0%, 100% { opacity: 0.7; transform: scaleX(1) rotate(5deg); }
-  50% { opacity: 0.3; transform: scaleX(1.5) rotate(5deg); }
+/* Estela animada */
+@keyframes estela-humo {
+  0% {
+    opacity: 0.6;
+    transform: scale(1) translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.6) translateX(-30px);
+  }
 }
