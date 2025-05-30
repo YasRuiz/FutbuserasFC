@@ -280,7 +280,7 @@ footer {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: radial-gradient(rgba(255,255,255,0.4), transparent 70%);
+  background: radial-gradient(rgba(255, 0, 204, 0.4), transparent 70%);
   filter: blur(6px);
   animation: estela-humo 0.6s ease-out infinite;
   z-index: 0;
