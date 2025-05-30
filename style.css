@@ -252,11 +252,11 @@ footer {
   padding: 20px;
   color: #777;
 }
-/* PELOTA ANIMADA EN HEADER */
+/* ANIMACIÓN PELOTA + RASTRO */
 .pelota-container {
   position: absolute;
   top: 60px;
-  left: -80px;
+  left: -100px;
   width: 60px;
   height: 60px;
   z-index: 0;
@@ -266,16 +266,31 @@ footer {
 .pelota {
   width: 60px;
   height: 60px;
+  border-radius: 50%;
   animation: saltar 1s ease-in-out infinite, girar 2s linear infinite;
 }
 
-/* Movimiento horizontal */
+/* Estela blanca tipo rastro */
+.estela {
+  position: absolute;
+  top: 18px;
+  left: -80px;
+  width: 80px;
+  height: 20px;
+  background: linear-gradient(to right, rgba(255,255,255,0.6), transparent);
+  border-radius: 10px;
+  filter: blur(8px);
+  transform: rotate(5deg);
+  animation: humo 1s ease-in-out infinite;
+}
+
+/* Movimiento de la pelota horizontal */
 @keyframes moverPelota {
   0% { left: -100px; }
   100% { left: 100%; }
 }
 
-/* Salto */
+/* Movimiento vertical (salto) */
 @keyframes saltar {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
@@ -285,4 +300,10 @@ footer {
 @keyframes girar {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* Animación de la estela como humo que vibra */
+@keyframes humo {
+  0%, 100% { opacity: 0.7; transform: scaleX(1) rotate(5deg); }
+  50% { opacity: 0.3; transform: scaleX(1.5) rotate(5deg); }
 }
