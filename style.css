@@ -294,17 +294,17 @@ footer {
 
 .pelota-container {
   position: absolute;
-  top: 120px; /* puedes ajustar esta altura */
+  top: 120px; /* Puedes subirla o bajarla aquí si necesitas */
   left: -80px;
-  width: 60px;
-  height: 60px;
+  width: 80px; /* Aumentado desde 60px */
+  height: 80px; /* Aumentado desde 60px */
   animation: moverPelota 6s linear infinite;
   z-index: 1;
 }
 
 .pelota {
-  width: 60px;
-  height: 60px;
+  width: 80px;  /* Aumentado desde 60px */
+  height: 80px; /* Aumentado desde 60px */
   border-radius: 50%;
   animation: saltar 1.2s ease-in-out infinite, girar 2s linear infinite;
 }
