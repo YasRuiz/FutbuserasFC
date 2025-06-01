@@ -2,23 +2,46 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Futbuseras FC</title>
+  <title>Futbuseras VOY FC</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Estilo principal de la página -->
   <link rel="stylesheet" href="style.css">
+  <!-- Icono del navegador (favicon) -->
   <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <!-- Fuente Montserrat desde Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
+
+  <!-- Encabezado del sitio: logo, título y lema -->
   <header>
     <img src="img/Logo-Futbuseras-FC.jpg" alt="Logo Futbuseras FC" class="logo-header">
-    <h1>Futbuseras FC</h1>
-    <p>Equipo femenino de fútbol - La Florida, Santiago de Chile</p>
+    <h1>Futbuseras VOY FC</h1>
+
+    <!-- Pelota animada pasando entre el título y el lema -->
+    <div class="pelota-wrapper">
+      <div class="pelota-container">
+        <!-- Estela de velocidad -->
+        <div class="estela estela-1"></div>
+        <div class="estela estela-2"></div>
+        <div class="estela estela-3"></div>
+        <!-- Imagen de la pelota -->
+        <img src="img/pelota.png" alt="Pelota" class="pelota">
+      </div>
+    </div>
+
     <p class="lema">"Equipo en la cancha, líderes en la ruta"</p>
   </header>
 
+  <!-- Menú hamburguesa responsive -->
   <nav class="menu">
+    <!-- Checkbox que activa el menú -->
     <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <!-- Icono visible (las tres líneas) -->
     <label for="menu-toggle" class="menu-icon">☰</label>
+
+    <!-- Enlaces del menú -->
     <ul class="menu-links">
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#historia">Historia</a></li>
@@ -29,6 +52,7 @@
     </ul>
   </nav>
 
+  <!-- Carrusel de imágenes principal -->
   <section id="inicio">
     <div class="carousel">
       <img src="img/Equipo-foto-1.jpg" class="active" alt="Foto equipo Futbuseras FC">
@@ -38,12 +62,14 @@
     </div>
   </section>
 
+  <!-- Sección de historia del club -->
   <section id="historia">
     <h2>Historia del Club</h2>
     <p>Futbuseras FC fue fundado en 2024 por un grupo de mujeres conductoras de buses del transporte público de Santiago, unidas por su pasión por el fútbol.</p>
     <p>Las fundadoras — <strong>Evelyn Riquelme</strong>, <strong>Diandra Elgueta</strong> y <strong>Betzabe Pacheco</strong> — impulsaron esta iniciativa con valores de <em>liderazgo, optimismo y compañerismo</em>.</p>
   </section>
 
+  <!-- Plantel del equipo -->
   <section id="plantel">
     <h2>Plantel</h2>
     <ul>
@@ -56,25 +82,30 @@
     </ul>
   </section>
 
+  <!-- Uniformes oficiales -->
   <section id="uniformes">
     <h2>Uniformes Oficiales</h2>
     <div class="uniformes-container">
+      <!-- Uniforme local -->
       <div class="uniforme">
         <img src="img/camisa-local.jpg" alt="Uniforme Local">
         <h3>Uniforme Local</h3>
         <p>Morado intenso con detalles esmeralda, para representar fuerza y unidad en casa.</p>
       </div>
+      <!-- Uniforme visitante -->
       <div class="uniforme">
         <img src="img/camisa-visitante.png" alt="Uniforme Visitante">
         <h3>Uniforme Visitante</h3>
         <p>Blanco con acentos morados y esmeraldas, elegante y vibrante para cada visita.</p>
       </div>
     </div>
+    <!-- Botón que lleva a la galería -->
     <div class="text-center">
       <a href="#galeria" class="btn-galeria">Ver Galería de Fotos</a>
     </div>
   </section>
 
+  <!-- Galería de fotos del equipo -->
   <section id="galeria">
     <h2>Galería de Fotos</h2>
     <div class="fotos">
@@ -85,14 +116,17 @@
     </div>
   </section>
 
+  <!-- Formulario de contacto -->
   <section id="contacto">
     <h2>Contáctanos</h2>
-    <form action="https://formspree.io/f/moqgyegg" method="POST">
+    <form action="https://formsubmit.co/yasisa497@gmail.com" method="POST">
       <input type="text" name="nombre" placeholder="Tu nombre completo" required>
       <input type="email" name="correo" placeholder="Tu correo electrónico" required>
       <textarea name="mensaje" placeholder="¿Por qué quieres unirte a Futbuseras FC?" required></textarea>
       <button type="submit">Enviar</button>
     </form>
+
+    <!-- Íconos de redes sociales -->
     <div class="iconos-sociales">
       <a href="https://www.instagram.com/futbuseras_voy" target="_blank">
         <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
@@ -103,13 +137,14 @@
     </div>
   </section>
 
+  <!-- Pie de página -->
   <footer>
     <p>&copy; 2025 Futbuseras FC - Todos los derechos reservados</p>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Scripts JavaScript -->
   <script>
-    // Carrusel automático
+    // Carrusel automático de imágenes
     const images = document.querySelectorAll('.carousel img');
     let index = 0;
     function showNextImage() {
@@ -117,9 +152,9 @@
       index = (index + 1) % images.length;
       images[index].classList.add('active');
     }
-    setInterval(showNextImage, 3000);
+    setInterval(showNextImage, 3000); // cambia cada 3 segundos
 
-    // Cerrar menú al hacer clic fuera o en enlaces
+    // Cierra el menú hamburguesa al hacer clic en un enlace
     const toggle = document.getElementById('menu-toggle');
     const menuLinks = document.querySelector('.menu-links');
 
@@ -129,6 +164,7 @@
       });
     });
 
+    // Cierra el menú hamburguesa si se hace clic fuera de él
     document.addEventListener('click', function (e) {
       if (
         toggle.checked &&
@@ -140,5 +176,6 @@
       }
     });
   </script>
+
 </body>
 </html>
