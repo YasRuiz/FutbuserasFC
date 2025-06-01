@@ -98,18 +98,20 @@
  <section id="contacto">
   <h2>Contáctanos</h2>
   <form action="https://formsubmit.co/el/wepelo" method="POST">
-    <input type="text" name="nombre" placeholder="Tu nombre completo" required>
-    <input type="email" name="correo" placeholder="Tu correo electrónico" required>
-    <textarea name="mensaje" placeholder="¿Por qué quieres unirte a Futbuseras FC?" required></textarea>
-    
-    <!-- Redirige a una página de agradecimiento (opcional, puedo creártela) -->
-    <input type="hidden" name="_next" value="https://yasruiz.github.io/FutbuserasFC/gracias.html">
-    
-    <!-- Protección contra spam (opcional) -->
-    <input type="hidden" name="_captcha" value="false">
-    
-    <button type="submit">Enviar</button>
-  </form>
+  <!-- Campos del formulario -->
+  <input type="text" name="nombre" placeholder="Tu nombre completo" required>
+  <input type="email" name="correo" placeholder="Tu correo electrónico" required>
+  <textarea name="mensaje" placeholder="¿Por qué quieres unirte a Futbuseras FC?" required></textarea>
+  
+  <!-- Redirección a gracias.html -->
+  <input type="hidden" name="_next" value="https://yasruiz.github.io/FutbuserasFC/gracias.html">
+  
+  <!-- Opcional: evitar CAPTCHA -->
+  <input type="hidden" name="_captcha" value="false">
+
+  <button type="submit">Enviar</button>
+</form>
+
 
   <div class="iconos-sociales">
     <a href="https://www.instagram.com/futbuseras_voy" target="_blank">
