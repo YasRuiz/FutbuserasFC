@@ -1,46 +1,52 @@
-/* Estilos para página gracias.html */
+/* Fondo general y estilo de texto de la página de gracias */
 body {
-  background-color: #111;
-  color: #fff;
-  font-family: 'Montserrat', sans-serif;
-  text-align: center;
-  padding: 50px 20px;
-  margin: 0;
+  background-color: #111; /* Fondo negro oscuro */
+  color: #fff; /* Texto blanco */
+  font-family: 'Montserrat', sans-serif; /* Fuente elegante y legible */
+  text-align: center; /* Centra todo el contenido horizontalmente */
+  padding: 50px 20px; /* Espacio alrededor del contenido */
+  margin: 0; /* Elimina margen exterior por defecto del navegador */
 }
 
+/* Espaciado inferior entre el logo y el contenido principal */
 header {
   margin-bottom: 30px;
 }
 
+/* Estilo del logo (si lo usas en esta página) */
 .logo-header {
-  max-width: 100px;
+  max-width: 100px; /* Tamaño máximo del logo */
   display: block;
-  margin: 0 auto 20px;
+  margin: 0 auto 20px; /* Centrado horizontal con espacio inferior */
 }
 
+/* Estilo del mensaje principal (¡Gracias por contactarnos!) */
 h1 {
-  color: #ff00cc;
-  font-size: 2em;
+  color: #ff00cc; /* Rosa vibrante */
+  font-size: 2em; /* Tamaño grande */
 }
 
+/* Estilo del párrafo explicativo */
 p {
-  font-size: 1.2em;
-  margin-bottom: 30px;
+  font-size: 1.2em; /* Un poco más grande que el texto normal */
+  margin-bottom: 30px; /* Espacio debajo del texto */
 }
 
+/* Estilo del botón para volver al inicio */
 .btn-volver {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #00f0ff;
-  color: #111;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s, transform 0.3s;
+  display: inline-block; /* Permite aplicar padding y márgenes */
+  padding: 10px 20px; /* Espaciado interior del botón */
+  background-color: #00f0ff; /* Azul claro llamativo */
+  color: #111; /* Texto oscuro para contraste */
+  border-radius: 8px; /* Bordes redondeados */
+  text-decoration: none; /* Elimina el subrayado típico de los enlaces */
+  font-weight: bold; /* Texto en negrita */
+  transition: background-color 0.3s, transform 0.3s; /* Animación suave al pasar el mouse */
 }
 
+/* Efecto hover del botón */
 .btn-volver:hover {
-  background-color: #ff00cc;
-  color: #fff;
-  transform: scale(1.05);
+  background-color: #ff00cc; /* Cambia a rosa cuando se pasa el mouse */
+  color: #fff; /* Cambia el texto a blanco */
+  transform: scale(1.05); /* Hace que el botón se agrande ligeramente */
 }
