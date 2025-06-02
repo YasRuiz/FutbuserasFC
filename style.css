@@ -359,3 +359,39 @@ footer {
     transform: scale(1.5) translateX(20px);
   }
 }
+/* Modal para ampliar imágenes */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-contenido {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  border: 4px solid #00f0ff;
+  box-shadow: 0 0 20px rgba(255, 0, 204, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.cerrar {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+}
+.cerrar:hover {
+  color: #ff00cc;
+}
