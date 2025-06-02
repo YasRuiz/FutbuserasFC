@@ -93,15 +93,21 @@
   </section>
 
   <!-- GALERÍA -->
-  <section id="galeria">
-    <h2>Galería de Fotos</h2>
-    <div class="fotos">
-      <img src="img/Equipo-foto-1.jpg" alt="Foto equipo Futbuseras FC">
-      <img src="img/defensa.jpg" alt="Entrenamiento Futbuseras">
-      <img src="img/celebracion.jpg" alt="Celebración de gol Futbuseras">
-      <img src="img/copas.jpg" alt="Premios">
-    </div>
-  </section>
+<section id="galeria">
+  <h2>Galería de Fotos</h2>
+  <div class="fotos">
+    <img src="img/Equipo-foto-1.jpg" alt="Foto equipo Futbuseras FC" onclick="mostrarImagen(this)">
+    <img src="img/defensa.jpg" alt="Entrenamiento Futbuseras" onclick="mostrarImagen(this)">
+    <img src="img/celebracion.jpg" alt="Celebración de gol Futbuseras" onclick="mostrarImagen(this)">
+    <img src="img/copas.jpg" alt="Premios" onclick="mostrarImagen(this)">
+  </div>
+
+  <!-- MODAL de Imagen -->
+  <div id="modal" class="modal" onclick="cerrarModal()">
+    <span class="cerrar">&times;</span>
+    <img class="modal-contenido" id="img-grande">
+  </div>
+</section>
 
   <!-- CONTACTO / FORMULARIO -->
   <section id="contacto">
