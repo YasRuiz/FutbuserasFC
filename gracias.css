@@ -1,0 +1,46 @@
+/* Estilos para página gracias.html */
+body {
+  background-color: #111;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  padding: 50px 20px;
+  margin: 0;
+}
+
+header {
+  margin-bottom: 30px;
+}
+
+.logo-header {
+  max-width: 100px;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+h1 {
+  color: #ff00cc;
+  font-size: 2em;
+}
+
+p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.btn-volver {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #00f0ff;
+  color: #111;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-volver:hover {
+  background-color: #ff00cc;
+  color: #fff;
+  transform: scale(1.05);
+}
