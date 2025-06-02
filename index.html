@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Futbuseras VOY FC</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-
   <!-- ENCABEZADO -->
   <header>
-    <img src="img/Logo-Futbuseras-FC.jpg" alt="Logo Futbuseras FC" class="logo-header">
+    <img src="img/Logo-Futbuseras-FC.jpg" alt="Logo Futbuseras FC" class="logo-header" />
     <h1>Futbuseras VOY FC</h1>
 
     <!-- Pelota animada entre título y lema -->
@@ -21,7 +20,7 @@
         <div class="estela estela-1"></div>
         <div class="estela estela-2"></div>
         <div class="estela estela-3"></div>
-        <img src="img/pelota.png" alt="Pelota" class="pelota">
+        <img src="img/pelota.png" alt="Pelota" class="pelota" />
       </div>
     </div>
 
@@ -30,7 +29,7 @@
 
   <!-- MENÚ DE NAVEGACIÓN -->
   <nav class="menu">
-    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" />
     <label for="menu-toggle" class="menu-icon">☰</label>
     <ul class="menu-links">
       <li><a href="#inicio">Inicio</a></li>
@@ -45,10 +44,10 @@
   <!-- INICIO / CARRUSEL -->
   <section id="inicio">
     <div class="carousel">
-      <img src="img/Equipo-foto-1.jpg" class="active" alt="Foto equipo Futbuseras FC">
-      <img src="img/defensa.jpg" alt="Entrenamiento Futbuseras">
-      <img src="img/celebracion.jpg" alt="Celebración de gol Futbuseras">
-      <img src="img/dt.jpg" alt="Entrenador">
+      <img src="img/Equipo-foto-1.jpg" class="active" alt="Foto equipo Futbuseras FC" />
+      <img src="img/defensa.jpg" alt="Entrenamiento Futbuseras" />
+      <img src="img/celebracion.jpg" alt="Celebración de gol Futbuseras" />
+      <img src="img/dt.jpg" alt="Entrenador" />
     </div>
   </section>
 
@@ -77,12 +76,12 @@
     <h2>Uniformes Oficiales</h2>
     <div class="uniformes-container">
       <div class="uniforme">
-        <img src="img/camisa-local.jpg" alt="Uniforme Local">
+        <img src="img/camisa-local.jpg" alt="Uniforme Local" />
         <h3>Uniforme Local</h3>
         <p>Morado intenso con detalles esmeralda, para representar fuerza y unidad en casa.</p>
       </div>
       <div class="uniforme">
-        <img src="img/camisa-visitante.png" alt="Uniforme Visitante">
+        <img src="img/camisa-visitante.png" alt="Uniforme Visitante" />
         <h3>Uniforme Visitante</h3>
         <p>Blanco con acentos morados y esmeraldas, elegante y vibrante para cada visita.</p>
       </div>
@@ -93,33 +92,29 @@
   </section>
 
   <!-- GALERÍA -->
-<section id="galeria">
-  <h2>Galería de Fotos</h2>
-  <div class="fotos">
-    <img src="img/Equipo-foto-1.jpg" alt="Foto equipo Futbuseras FC" onclick="mostrarImagen(this)">
-    <img src="img/defensa.jpg" alt="Entrenamiento Futbuseras" onclick="mostrarImagen(this)">
-    <img src="img/celebracion.jpg" alt="Celebración de gol Futbuseras" onclick="mostrarImagen(this)">
-    <img src="img/copas.jpg" alt="Premios" onclick="mostrarImagen(this)">
-  </div>
+  <section id="galeria">
+    <h2>Galería de Fotos</h2>
+    <div class="fotos">
+      <img src="img/Equipo-foto-1.jpg" alt="Foto equipo Futbuseras FC" onclick="mostrarImagen(this)" />
+      <img src="img/defensa.jpg" alt="Entrenamiento Futbuseras" onclick="mostrarImagen(this)" />
+      <img src="img/celebracion.jpg" alt="Celebración de gol Futbuseras" onclick="mostrarImagen(this)" />
+      <img src="img/copas.jpg" alt="Premios" onclick="mostrarImagen(this)" />
+    </div>
+  </section>
 
-  <!-- MODAL de Imagen -->
+  <!-- MODAL PARA VER IMÁGENES GRANDES -->
   <div id="modal" class="modal" onclick="cerrarModal()">
-    <span class="cerrar">&times;</span>
-    <img class="modal-contenido" id="img-grande">
+    <img id="img-grande" alt="Imagen Ampliada" />
   </div>
-</section>
 
   <!-- CONTACTO / FORMULARIO -->
   <section id="contacto">
     <h2>Contáctanos</h2>
-    <form action="https://formsubmit.co/yasisa497@gmail.com" method="POST">
-      <!-- Redirige a página de gracias -->
-      <input type="hidden" name="_next" value="https://yasruiz.github.io/FutbuserasFC/gracias.html">
-      <!-- Opcional: desactiva captcha -->
-      <input type="hidden" name="_captcha" value="false">
-      
-      <input type="text" name="nombre" placeholder="Tu nombre completo" required>
-      <input type="email" name="correo" placeholder="Tu correo electrónico" required>
+    <form action="https://formsubmit.co/el/wepelo" method="POST">
+      <input type="hidden" name="_next" value="https://yasruiz.github.io/FutbuserasFC/gracias.html" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="text" name="nombre" placeholder="Tu nombre completo" required />
+      <input type="email" name="correo" placeholder="Tu correo electrónico" required />
       <textarea name="mensaje" placeholder="¿Por qué quieres unirte a Futbuseras FC?" required></textarea>
       <button type="submit">Enviar</button>
     </form>
@@ -127,10 +122,10 @@
     <!-- REDES SOCIALES -->
     <div class="iconos-sociales">
       <a href="https://www.instagram.com/futbuseras_voy" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" />
       </a>
       <a href="https://wa.me/56975357329" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
       </a>
     </div>
   </section>
@@ -155,24 +150,34 @@
     // Cerrar menú al hacer clic fuera o al seleccionar enlace
     const toggle = document.getElementById('menu-toggle');
     const menuLinks = document.querySelector('.menu-links');
-
     document.querySelectorAll('.menu-links a').forEach(link => {
       link.addEventListener('click', () => {
         toggle.checked = false;
       });
     });
-
     document.addEventListener('click', function (e) {
-      if (
-        toggle.checked &&
-        !e.target.closest('.menu-links') &&
-        !e.target.closest('.menu-icon') &&
-        e.target !== toggle
-      ) {
+      if (toggle.checked &&
+          !e.target.closest('.menu-links') &&
+          !e.target.closest('.menu-icon') &&
+          e.target !== toggle) {
         toggle.checked = false;
       }
     });
-  </script>
 
+    // Mostrar imagen ampliada
+    function mostrarImagen(img) {
+      const modal = document.getElementById("modal");
+      const imgGrande = document.getElementById("img-grande");
+      modal.style.display = "flex";
+      imgGrande.src = img.src;
+      imgGrande.alt = img.alt;
+    }
+
+    // Cerrar el modal
+    function cerrarModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
 </body>
 </html>
+
