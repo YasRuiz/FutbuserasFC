@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pago - Futbuseras FC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Resumen de tu compra</h1>
+
+  <ul id="resumen"></ul>
+  <p>Total: $<span id="total">0</span> CLP</p>
+
+  <h2>Método de pago</h2>
+  <select id="metodoPago">
+    <option value="WebPay">WebPay</option>
+    <option value="Transferencia">Transferencia</option>
+    <option value="Efectivo">Pago en efectivo</option>
+  </select>
+
+  <br><br>
+  <button onclick="enviarWhatsApp()">Enviar Pedido por WhatsApp</button>
+
+  <script>
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const usuario = JSON.parse(localStorage.getItem("usuario")) || {};
+    const resumen = document.getElementById("resumen");
+    const totalElement = document.getElementById("total");
+    let total = 0;
+
+    carrito.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.nombre} - $${item.precio} CLP`;
+      resumen.appendChild(li);
+      total += item.precio;
+    });
+
+    totalElement.textContent = total;
+
+    function enviarWhatsApp() {
+      const metodoPago = document.getElementById("metodoPago").value;
+      let mensaje = `🟣 Pedido Futbuseras FC:%0A`;
+
+      carrito.forEach(p => {
+        mensaje += `- ${p.nombre}: $${p.precio} CLP%0A`;
+      });
+
+      mensaje += `%0ATotal: $${total} CLP%0A`;
+      mensaje += `%0ADatos del Cliente:%0A`;
+
+      if (usuario.rut) {
+        mensaje += `Nombre: ${usuario.nombre} ${usuario.apellido}%0A`;
+        mensaje += `RUT: ${usuario.rut}%0A`;
+        mensaje += `Correo: ${usuario.correo}%0A`;
+        mensaje += `Teléfono: ${usuario.telefono}%0A`;
+      } else {
+        mensaje += `Correo: ${usuario.correo || "No disponible"}%0A`;
+      }
+
+      mensaje += `%0AMedio de Pago: ${metodoPago}`;
+
+      const numero = "56975357329";
+      const url = `https://wa.me/${numero}?text=${mensaje}`;
+      window.open(url, "_blank");
+    }
+  </script>
+</body>
+</html>
