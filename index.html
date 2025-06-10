@@ -39,7 +39,7 @@
     </ul>
   </nav>
 
-  <!-- SECCIÓN DE INICIO -->
+  <!-- SECCIÓN INICIO -->
   <section id="inicio">
     <div class="carousel">
       <img src="img/Equipo-foto-1.jpg" class="active" alt="Foto equipo Futbuseras FC" />
@@ -130,6 +130,7 @@
     <ul id="lista-carrito"></ul>
     <p>Total: $<span id="total">0</span> CLP</p>
     <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+    <button onclick="confirmarCompra()">Confirmar Compra</button>
   </div>
 
   <!-- CONTACTO -->
@@ -160,6 +161,7 @@
 
   <!-- SCRIPTS -->
   <script>
+    // Carrusel automático
     const images = document.querySelectorAll('.carousel img');
     let index = 0;
     function showNextImage() {
@@ -169,6 +171,7 @@
     }
     setInterval(showNextImage, 3000);
 
+    // Cierre del menú móvil
     const toggle = document.getElementById('menu-toggle');
     document.querySelectorAll('.menu-links a').forEach(link => {
       link.addEventListener('click', () => {
@@ -184,6 +187,7 @@
       }
     });
 
+    // Modal de imágenes
     function mostrarImagen(img) {
       const modal = document.getElementById("modal");
       const imgGrande = document.getElementById("img-grande");
@@ -196,31 +200,62 @@
       document.getElementById("modal").style.display = "none";
     }
 
-    // FUNCIONES DEL CARRITO
+    // ===== CARRITO =====
     let carrito = [];
     let total = 0;
 
-    function agregarAlCarrito(producto, precio) {
-      carrito.push({ producto, precio });
+    function agregarAlCarrito(nombre, precio) {
+      const id = Date.now();
+      carrito.push({ id, nombre, precio });
       total += precio;
       actualizarCarrito();
     }
 
-    function actualizarCarrito() {
-      const lista = document.getElementById("lista-carrito");
-      lista.innerHTML = "";
-      carrito.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = `${item.producto} - $${item.precio} CLP`;
-        lista.appendChild(li);
-      });
-      document.getElementById("total").textContent = total;
+    function eliminarDelCarrito(idProducto) {
+      const index = carrito.findIndex(item => item.id === idProducto);
+      if (index !== -1) {
+        total -= carrito[index].precio;
+        carrito.splice(index, 1);
+        actualizarCarrito();
+      }
     }
 
     function vaciarCarrito() {
       carrito = [];
       total = 0;
       actualizarCarrito();
+    }
+
+    function confirmarCompra() {
+      if (carrito.length === 0) {
+        alert("El carrito está vacío.");
+        return;
+      }
+
+      let resumen = "Resumen de tu compra:\n";
+      carrito.forEach(item => {
+        resumen += `- ${item.nombre}: $${item.precio} CLP\n`;
+      });
+      resumen += `\nTotal: $${total} CLP`;
+
+      alert(resumen);
+      vaciarCarrito();
+    }
+
+    function actualizarCarrito() {
+      const lista = document.getElementById("lista-carrito");
+      lista.innerHTML = "";
+
+      carrito.forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          ${item.nombre} - $${item.precio} CLP
+          <button onclick="eliminarDelCarrito(${item.id})" style="margin-left: 10px; background:#ff00cc; color:white; border:none; border-radius:4px; cursor:pointer;">X</button>
+        `;
+        lista.appendChild(li);
+      });
+
+      document.getElementById("total").textContent = total;
     }
   </script>
 </body>
