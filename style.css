@@ -505,3 +505,84 @@ footer {
   color: #fff;
   transform: scale(1.05);
 }
+
+/* ======== ESTILO GENERAL PARA LOGIN Y PAGO ======== */
+body {
+  background-color: #111;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  padding: 20px;
+  line-height: 1.5;
+}
+
+h1, h2 {
+  color: #ff00cc;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+section {
+  max-width: 500px;
+  margin: auto;
+  margin-bottom: 40px;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #1c1c1c;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #222;
+  color: white;
+  border: 2px solid #00f0ff;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #ff00cc;
+  box-shadow: 0 0 5px #ff00cc;
+}
+
+button {
+  background-color: #00f0ff;
+  color: #111;
+  border: none;
+  padding: 12px 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff00cc;
+  color: #fff;
+  transform: scale(1.03);
+}
+
+/* ======== LISTA DEL RESUMEN DE COMPRA ======== */
+ul#resumen {
+  max-width: 500px;
+  margin: auto;
+  padding-left: 20px;
+  list-style: none;
+}
+
+ul#resumen li {
+  padding: 8px 0;
+  border-bottom: 1px solid #333;
+}
+
+/* ======== MENSAJE FINAL ======== */
+p#total {
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+}
