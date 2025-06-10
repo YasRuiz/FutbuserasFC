@@ -587,3 +587,235 @@ p#total {
   font-weight: bold;
 }
 
+/* ========== VARIABLES ========== */
+:root {
+  --color-primario: #ff00cc;
+  --color-secundario: #00f0ff;
+  --fondo: #111;
+  --texto: #fff;
+}
+
+/* ========== GENERAL ========== */
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--fondo);
+  color: var(--texto);
+  line-height: 1.6;
+}
+
+h1, h2 {
+  color: var(--color-primario);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+a {
+  color: var(--color-secundario);
+  text-decoration: none;
+}
+
+/* ========== ACCESIBILIDAD Y VALIDACIÓN ========== */
+input:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-secundario);
+  outline-offset: 3px;
+}
+
+input.error {
+  border-color: red;
+  box-shadow: 0 0 6px red;
+}
+
+/* ========== FORMULARIOS Y CAMPOS ========== */
+form, section, ul#resumen {
+  max-width: 500px;
+  margin: auto;
+  margin-bottom: 40px;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #1c1c1c;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #222;
+  color: white;
+  border: 2px solid var(--color-secundario);
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 5px var(--color-primario);
+}
+
+/* ========== BOTONES ========== */
+button {
+  background-color: var(--color-secundario);
+  color: var(--fondo);
+  border: none;
+  padding: 12px 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--color-primario);
+  color: #fff;
+  transform: scale(1.03);
+}
+
+button.whatsapp {
+  background-color: #25D366;
+  color: white;
+}
+
+button.whatsapp:hover {
+  background-color: #1ebe5d;
+  transform: scale(1.05);
+}
+
+/* ========== LISTAS ========== */
+ul {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: auto;
+}
+
+ul li {
+  padding: 8px;
+  border-bottom: 1px solid #333;
+}
+
+ul#resumen li {
+  padding: 8px 0;
+  border-bottom: 1px solid #333;
+}
+
+p#total {
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--color-secundario);
+}
+
+/* ========== GALERÍA, TIENDA Y PRODUCTOS ========== */
+.fotos, .productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.fotos img, .producto img {
+  max-width: 280px;
+  max-height: 200px;
+  border-radius: 10px;
+  border: 2px solid var(--color-secundario);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.fotos img:hover, .producto:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0,255,255,0.3);
+}
+
+.producto {
+  background-color: #1e1e1e;
+  border: 2px solid var(--color-secundario);
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 280px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+  transition: transform 0.3s;
+}
+
+.producto h3 {
+  color: var(--color-primario);
+}
+
+.producto p {
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+/* ========== CARRITO ========== */
+.carrito {
+  background-color: #1a1a1a;
+  border: 2px solid var(--color-secundario);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 40px auto;
+  max-width: 600px;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+  color: #fff;
+}
+
+.carrito h2 {
+  color: var(--color-primario);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.carrito button {
+  margin-top: 10px;
+}
+
+/* ========== MODAL ========== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-contenido {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  border: 4px solid var(--color-secundario);
+  box-shadow: 0 0 20px rgba(255, 0, 204, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.cerrar {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.cerrar:hover {
+  color: var(--color-primario);
+}
+
+/* ========== MEDIA QUERIES ========== */
+@media (max-width: 500px) {
+  form, section, ul#resumen {
+    padding: 10px;
+  }
+}
+
+
