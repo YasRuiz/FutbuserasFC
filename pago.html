@@ -14,13 +14,14 @@
 
   <h2>Método de pago</h2>
   <select id="metodoPago">
+    <option value="">-- Selecciona un método --</option>
     <option value="WebPay">WebPay</option>
     <option value="Transferencia">Transferencia</option>
     <option value="Efectivo">Pago en efectivo</option>
   </select>
 
   <br><br>
-  <button onclick="enviarWhatsApp()">Enviar Pedido por WhatsApp</button>
+  <button onclick="procesarPago()">Proceder al Pago</button>
 
   <script>
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -38,8 +39,26 @@
 
     totalElement.textContent = total;
 
+    function procesarPago() {
+      const metodo = document.getElementById("metodoPago").value;
+
+      if (!metodo) {
+        alert("Por favor selecciona un método de pago.");
+        return;
+      }
+
+      localStorage.setItem("metodoPago", metodo);
+
+      if (metodo === "WebPay") {
+        window.location.href = "webpay.html";
+      } else {
+        // Para métodos distintos de WebPay, enviamos directamente
+        enviarWhatsApp();
+      }
+    }
+
     function enviarWhatsApp() {
-      const metodoPago = document.getElementById("metodoPago").value;
+      const metodoPago = localStorage.getItem("metodoPago");
       let mensaje = `🟣 Pedido Futbuseras FC:%0A`;
 
       carrito.forEach(p => {
@@ -67,3 +86,4 @@
   </script>
 </body>
 </html>
+
