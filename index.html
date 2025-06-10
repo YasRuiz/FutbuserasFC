@@ -160,8 +160,8 @@
   </footer>
 
   <!-- SCRIPTS -->
+   <!-- SCRIPTS -->
   <script>
-    // Carrusel automático
     const images = document.querySelectorAll('.carousel img');
     let index = 0;
     function showNextImage() {
@@ -171,7 +171,6 @@
     }
     setInterval(showNextImage, 3000);
 
-    // Cierre del menú móvil
     const toggle = document.getElementById('menu-toggle');
     document.querySelectorAll('.menu-links a').forEach(link => {
       link.addEventListener('click', () => {
@@ -187,7 +186,6 @@
       }
     });
 
-    // Modal de imágenes
     function mostrarImagen(img) {
       const modal = document.getElementById("modal");
       const imgGrande = document.getElementById("img-grande");
@@ -200,7 +198,6 @@
       document.getElementById("modal").style.display = "none";
     }
 
-    // ===== CARRITO =====
     let carrito = [];
     let total = 0;
 
@@ -231,15 +228,8 @@
         alert("El carrito está vacío.");
         return;
       }
-
-      let resumen = "Resumen de tu compra:\n";
-      carrito.forEach(item => {
-        resumen += `- ${item.nombre}: $${item.precio} CLP\n`;
-      });
-      resumen += `\nTotal: $${total} CLP`;
-
-      alert(resumen);
-      vaciarCarrito();
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      window.location.href = "login.html";
     }
 
     function actualizarCarrito() {
