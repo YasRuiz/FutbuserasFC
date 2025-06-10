@@ -2,59 +2,93 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Iniciar sesión o registrarse</title>
+  <title>Iniciar o Crear Cuenta</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Cuenta Futbuseras FC</h1>
-
   <section>
-    <h2>Iniciar Sesión</h2>
-    <input type="email" id="loginEmail" placeholder="Correo electrónico" required />
-    <input type="password" id="loginClave" placeholder="Clave" required />
-    <button onclick="login()">Ingresar</button>
+    <h2>Ingresa a tu cuenta</h2>
+    <form id="form-login">
+      <input type="email" id="loginEmail" placeholder="Correo" required />
+      <input type="password" id="loginClave" placeholder="Contraseña" required minlength="6" />
+      <button type="submit">Iniciar sesión</button>
+    </form>
   </section>
 
   <section>
-    <h2>Registrarse</h2>
-    <input type="text" id="rut" placeholder="RUT" required />
-    <input type="text" id="nombre" placeholder="Nombre" required />
-    <input type="text" id="apellido" placeholder="Apellido" required />
-    <input type="email" id="correo" placeholder="Correo electrónico" required />
-    <input type="text" id="telefono" placeholder="Teléfono" required />
-    <button onclick="registrar()">Crear Cuenta</button>
+    <h2>¿No tienes cuenta? Crea una</h2>
+    <form id="form-crear-cuenta">
+      <input type="text" id="rut" placeholder="RUT (Ej: 12345678-9)" maxlength="10" required />
+      <input type="text" id="nombre" placeholder="Nombre" required />
+      <input type="text" id="apellido" placeholder="Apellido" required />
+      <input type="email" id="correoNuevo" placeholder="Correo electrónico" required />
+      <input type="tel" id="telefono" placeholder="Teléfono" required pattern="[0-9]+" maxlength="15" />
+      <input type="password" id="claveNueva" placeholder="Crea una contraseña" required minlength="6" />
+      <button type="submit">Crear cuenta</button>
+    </form>
+    <p id="mensaje-usuario" style="color: #ff00cc; text-align: center;"></p>
   </section>
 
   <script>
-    function login() {
-      const correo = document.getElementById("loginEmail").value;
+    // Simulación de base de datos local
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    function validarRUT(rut) {
+      return /^\d{8}-\d{1}$/.test(rut);
+    }
+
+    function soloLetras(valor) {
+      return /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(valor);
+    }
+
+    // Login
+    document.getElementById("form-login").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("loginEmail").value;
       const clave = document.getElementById("loginClave").value;
 
-      if (correo && clave) {
-        localStorage.setItem("usuario", JSON.stringify({ correo }));
+      const usuario = usuarios.find(u => u.correo === email && u.clave === clave);
+      if (usuario) {
+        localStorage.setItem("usuarioActivo", JSON.stringify(usuario));
         window.location.href = "pago.html";
       } else {
-        alert("Completa todos los campos para ingresar.");
+        alert("Correo o contraseña incorrectos.");
       }
-    }
+    });
 
-    function registrar() {
-      const usuario = {
-        rut: document.getElementById("rut").value,
-        nombre: document.getElementById("nombre").value,
-        apellido: document.getElementById("apellido").value,
-        correo: document.getElementById("correo").value,
-        telefono: document.getElementById("telefono").value,
-      };
+    // Crear cuenta
+    document.getElementById("form-crear-cuenta").addEventListener("submit", function (e) {
+      e.preventDefault();
 
-      if (Object.values(usuario).every(val => val.trim() !== "")) {
-        localStorage.setItem("usuario", JSON.stringify(usuario));
-        window.location.href = "pago.html";
-      } else {
-        alert("Completa todos los campos para registrarte.");
+      const rut = document.getElementById("rut").value;
+      const nombre = document.getElementById("nombre").value;
+      const apellido = document.getElementById("apellido").value;
+      const correo = document.getElementById("correoNuevo").value;
+      const telefono = document.getElementById("telefono").value;
+      const clave = document.getElementById("claveNueva").value;
+      const mensaje = document.getElementById("mensaje-usuario");
+
+      if (!validarRUT(rut)) {
+        mensaje.textContent = "Formato de RUT inválido. Debe ser 8 dígitos, guion, 1 dígito (ej: 12345678-9).";
+        return;
       }
-    }
+
+      if (!soloLetras(nombre) || !soloLetras(apellido)) {
+        mensaje.textContent = "Nombre y Apellido solo deben contener letras.";
+        return;
+      }
+
+      if (usuarios.find(u => u.rut === rut || u.correo === correo)) {
+        mensaje.textContent = "Usuario ya existe. Recupera tu clave.";
+        return;
+      }
+
+      const nuevoUsuario = { rut, nombre, apellido, correo, telefono, clave };
+      usuarios.push(nuevoUsuario);
+      localStorage.setItem("usuarios", JSON.stringify(usuarios));
+      mensaje.textContent = "Cuenta creada con éxito. Ahora puedes iniciar sesión.";
+    });
   </script>
 </body>
 </html>
