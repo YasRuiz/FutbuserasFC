@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Iniciar sesión o registrarse</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Cuenta Futbuseras FC</h1>
+
+  <section>
+    <h2>Iniciar Sesión</h2>
+    <input type="email" id="loginEmail" placeholder="Correo electrónico" required />
+    <input type="password" id="loginClave" placeholder="Clave" required />
+    <button onclick="login()">Ingresar</button>
+  </section>
+
+  <section>
+    <h2>Registrarse</h2>
+    <input type="text" id="rut" placeholder="RUT" required />
+    <input type="text" id="nombre" placeholder="Nombre" required />
+    <input type="text" id="apellido" placeholder="Apellido" required />
+    <input type="email" id="correo" placeholder="Correo electrónico" required />
+    <input type="text" id="telefono" placeholder="Teléfono" required />
+    <button onclick="registrar()">Crear Cuenta</button>
+  </section>
+
+  <script>
+    function login() {
+      const correo = document.getElementById("loginEmail").value;
+      const clave = document.getElementById("loginClave").value;
+
+      if (correo && clave) {
+        localStorage.setItem("usuario", JSON.stringify({ correo }));
+        window.location.href = "pago.html";
+      } else {
+        alert("Completa todos los campos para ingresar.");
+      }
+    }
+
+    function registrar() {
+      const usuario = {
+        rut: document.getElementById("rut").value,
+        nombre: document.getElementById("nombre").value,
+        apellido: document.getElementById("apellido").value,
+        correo: document.getElementById("correo").value,
+        telefono: document.getElementById("telefono").value,
+      };
+
+      if (Object.values(usuario).every(val => val.trim() !== "")) {
+        localStorage.setItem("usuario", JSON.stringify(usuario));
+        window.location.href = "pago.html";
+      } else {
+        alert("Completa todos los campos para registrarte.");
+      }
+    }
+  </script>
+</body>
+</html>
