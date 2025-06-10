@@ -1,30 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Estoy definiendo la codificación de caracteres y configurando el diseño responsivo -->
   <meta charset="UTF-8" />
   <title>Futbuseras VOY FC</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Enlazo la hoja de estilos externa que contiene todo el diseño -->
   <link rel="stylesheet" href="style.css" />
-
-  <!-- Ícono que se muestra en la pestaña del navegador -->
   <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
-
-  <!-- Fuente importada desde Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <!-- ENCABEZADO -->
   <header>
-    <!-- Logo del equipo -->
     <img src="img/Logo-Futbuseras-FC.jpg" alt="Logo Futbuseras FC" class="logo-header" />
-
-    <!-- Título principal del sitio -->
     <h1>Futbuseras VOY FC</h1>
-
-    <!-- Animación decorativa con una pelota y su estela -->
     <div class="pelota-wrapper">
       <div class="pelota-container">
         <div class="estela estela-1"></div>
@@ -33,32 +21,27 @@
         <img src="img/pelota.png" alt="Pelota" class="pelota" />
       </div>
     </div>
-
-    <!-- Lema del equipo -->
     <p class="lema">"Equipo en la cancha, líderes en la ruta"</p>
   </header>
 
   <!-- MENÚ DE NAVEGACIÓN -->
   <nav class="menu">
-    <!-- Checkbox para controlar la visibilidad del menú en pantallas pequeñas -->
     <input type="checkbox" id="menu-toggle" class="menu-toggle" />
     <label for="menu-toggle" class="menu-icon">☰</label>
-
-    <!-- Enlaces del menú -->
     <ul class="menu-links">
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#historia">Historia</a></li>
       <li><a href="#plantel">Plantel</a></li>
       <li><a href="#uniformes">Uniformes</a></li>
       <li><a href="#galeria">Galería</a></li>
+      <li><a href="#tienda">Tienda</a></li>
       <li><a href="#contacto">Contáctanos</a></li>
     </ul>
   </nav>
 
-  <!-- SECCIÓN DE INICIO CON CARRUSEL DE IMÁGENES -->
+  <!-- SECCIÓN DE INICIO -->
   <section id="inicio">
     <div class="carousel">
-      <!-- Imagen activa al cargar la página -->
       <img src="img/Equipo-foto-1.jpg" class="active" alt="Foto equipo Futbuseras FC" />
       <img src="img/defensa.jpg" alt="Entrenamiento Futbuseras" />
       <img src="img/celebracion.jpg" alt="Celebración de gol Futbuseras" />
@@ -66,15 +49,14 @@
     </div>
   </section>
 
-  <!-- HISTORIA DEL CLUB -->
+  <!-- HISTORIA -->
   <section id="historia">
     <h2>Historia del Club</h2>
-    <!-- Breve descripción del origen y valores -->
     <p>Futbuseras FC fue fundado en 2024 por un grupo de mujeres conductoras de buses del transporte público de Santiago, unidas por su pasión por el fútbol.</p>
     <p>Las fundadoras — <strong>Evelyn Riquelme</strong>, <strong>Diandra Elgueta</strong> y <strong>Betzabe Pacheco</strong> — impulsaron esta iniciativa con valores de <em>liderazgo, optimismo y compañerismo</em>.</p>
   </section>
 
-  <!-- PLANTEL DE JUGADORAS Y DT -->
+  <!-- PLANTEL -->
   <section id="plantel">
     <h2>Plantel</h2>
     <ul>
@@ -87,35 +69,30 @@
     </ul>
   </section>
 
-  <!-- UNIFORMES OFICIALES -->
+  <!-- UNIFORMES -->
   <section id="uniformes">
     <h2>Uniformes Oficiales</h2>
     <div class="uniformes-container">
-      <!-- Uniforme de local -->
       <div class="uniforme">
         <img src="img/camisa-local.jpg" alt="Uniforme Local" />
         <h3>Uniforme Local</h3>
         <p>Morado intenso con detalles esmeralda, para representar fuerza y unidad en casa.</p>
       </div>
-      <!-- Uniforme de visita -->
       <div class="uniforme">
         <img src="img/camisa-visitante.png" alt="Uniforme Visitante" />
         <h3>Uniforme Visitante</h3>
         <p>Blanco con acentos morados y esmeraldas, elegante y vibrante para cada visita.</p>
       </div>
     </div>
-
-    <!-- Botón que lleva a la galería -->
     <div class="text-center">
       <a href="#galeria" class="btn-galeria">Ver Galería de Fotos</a>
     </div>
   </section>
 
-  <!-- GALERÍA DE FOTOS -->
+  <!-- GALERÍA -->
   <section id="galeria">
     <h2>Galería de Fotos</h2>
     <div class="fotos">
-      <!-- Imágenes miniatura con función de ampliar -->
       <img src="img/Equipo-foto-1.jpg" alt="Foto equipo Futbuseras FC" onclick="mostrarImagen(this)" />
       <img src="img/defensa.jpg" alt="Entrenamiento Futbuseras" onclick="mostrarImagen(this)" />
       <img src="img/celebracion.jpg" alt="Celebración de gol Futbuseras" onclick="mostrarImagen(this)" />
@@ -123,27 +100,49 @@
     </div>
   </section>
 
-  <!-- MODAL PARA IMÁGENES GRANDES -->
+  <!-- MODAL IMAGEN -->
   <div id="modal" class="modal" onclick="cerrarModal()">
     <img id="img-grande" alt="Imagen Ampliada" />
   </div>
 
-  <!-- FORMULARIO DE CONTACTO -->
+  <!-- TIENDA -->
+  <section id="tienda">
+    <h2>Tienda Oficial</h2>
+    <div class="productos">
+      <div class="producto">
+        <img src="img/camisa-local.jpg" alt="Camiseta Local" />
+        <h3>Camiseta Local</h3>
+        <p>$15.000 CLP</p>
+        <button onclick="agregarAlCarrito('Camiseta Local', 15000)">Agregar al carrito</button>
+      </div>
+      <div class="producto">
+        <img src="img/camisa-visitante.png" alt="Camiseta Visitante" />
+        <h3>Camiseta Visitante</h3>
+        <p>$15.000 CLP</p>
+        <button onclick="agregarAlCarrito('Camiseta Visitante', 15000)">Agregar al carrito</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARRITO -->
+  <div id="carrito" class="carrito">
+    <h2>Carrito de Compras</h2>
+    <ul id="lista-carrito"></ul>
+    <p>Total: $<span id="total">0</span> CLP</p>
+    <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+  </div>
+
+  <!-- CONTACTO -->
   <section id="contacto">
     <h2>Contáctanos</h2>
     <form action="https://formsubmit.co/yasisa497@gmail.com" method="POST">
-      <!-- Configuro redirección y desactivo captcha -->
       <input type="hidden" name="_next" value="https://yasruiz.github.io/FutbuserasFC/gracias.html" />
       <input type="hidden" name="_captcha" value="false" />
-
-      <!-- Campos del formulario -->
       <input type="text" name="nombre" placeholder="Tu nombre completo" required />
       <input type="email" name="correo" placeholder="Tu correo electrónico" required />
       <textarea name="mensaje" placeholder="¿Por qué quieres unirte a Futbuseras FC?" required></textarea>
       <button type="submit">Enviar</button>
     </form>
-
-    <!-- Iconos con enlaces a redes sociales -->
     <div class="iconos-sociales">
       <a href="https://www.instagram.com/futbuseras_voy" target="_blank">
         <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" />
@@ -159,9 +158,8 @@
     <p>&copy; 2025 Futbuseras FC - Todos los derechos reservados</p>
   </footer>
 
-  <!-- SCRIPTS DE FUNCIONALIDAD -->
+  <!-- SCRIPTS -->
   <script>
-    // Hago que las imágenes del carrusel cambien automáticamente cada 3 segundos
     const images = document.querySelectorAll('.carousel img');
     let index = 0;
     function showNextImage() {
@@ -171,9 +169,7 @@
     }
     setInterval(showNextImage, 3000);
 
-    // Cierro el menú al hacer clic fuera o en un enlace
     const toggle = document.getElementById('menu-toggle');
-    const menuLinks = document.querySelector('.menu-links');
     document.querySelectorAll('.menu-links a').forEach(link => {
       link.addEventListener('click', () => {
         toggle.checked = false;
@@ -188,7 +184,6 @@
       }
     });
 
-    // Muestro la imagen grande al hacer clic en una miniatura
     function mostrarImagen(img) {
       const modal = document.getElementById("modal");
       const imgGrande = document.getElementById("img-grande");
@@ -197,9 +192,35 @@
       imgGrande.alt = img.alt;
     }
 
-    // Cierro el modal al hacer clic fuera de la imagen
     function cerrarModal() {
       document.getElementById("modal").style.display = "none";
+    }
+
+    // FUNCIONES DEL CARRITO
+    let carrito = [];
+    let total = 0;
+
+    function agregarAlCarrito(producto, precio) {
+      carrito.push({ producto, precio });
+      total += precio;
+      actualizarCarrito();
+    }
+
+    function actualizarCarrito() {
+      const lista = document.getElementById("lista-carrito");
+      lista.innerHTML = "";
+      carrito.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = `${item.producto} - $${item.precio} CLP`;
+        lista.appendChild(li);
+      });
+      document.getElementById("total").textContent = total;
+    }
+
+    function vaciarCarrito() {
+      carrito = [];
+      total = 0;
+      actualizarCarrito();
     }
   </script>
 </body>
