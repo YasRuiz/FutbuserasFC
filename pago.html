@@ -1,89 +1,117 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Pago - Futbuseras FC</title>
+  <meta charset="UTF-8">
+  <title>Iniciar Sesión o Crear Cuenta</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Resumen de tu compra</h1>
 
-  <ul id="resumen"></ul>
-  <p>Total: $<span id="total">0</span> CLP</p>
+  <section>
+    <h1>Iniciar Sesión</h1>
+    <form id="loginForm">
+      <input type="text" id="correoLogin" placeholder="Correo">
+      <input type="password" id="claveLogin" placeholder="Clave">
+      <button type="submit">Ingresar</button>
+    </form>
+  </section>
 
-  <h2>Método de pago</h2>
-  <select id="metodoPago">
-    <option value="">-- Selecciona un método --</option>
-    <option value="WebPay">WebPay</option>
-    <option value="Transferencia">Transferencia</option>
-    <option value="Efectivo">Pago en efectivo</option>
-  </select>
-
-  <br><br>
-  <button onclick="procesarPago()">Proceder al Pago</button>
+  <section>
+    <h2>¿No tienes cuenta? Regístrate</h2>
+    <form id="registroForm">
+      <input type="text" id="rut" placeholder="RUT (ej: 12345678-9)">
+      <input type="text" id="nombre" placeholder="Nombre">
+      <input type="text" id="apellido" placeholder="Apellido">
+      <input type="text" id="correo" placeholder="Correo">
+      <input type="text" id="telefono" placeholder="Teléfono (solo números)">
+      <input type="password" id="clave" placeholder="Clave">
+      <button type="submit">Crear Cuenta</button>
+    </form>
+  </section>
 
   <script>
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    const usuario = JSON.parse(localStorage.getItem("usuario")) || {};
-    const resumen = document.getElementById("resumen");
-    const totalElement = document.getElementById("total");
-    let total = 0;
+    // LOGIN
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
 
-    carrito.forEach(item => {
-      const li = document.createElement("li");
-      li.textContent = `${item.nombre} - $${item.precio} CLP`;
-      resumen.appendChild(li);
-      total += item.precio;
-    });
+      const correo = document.getElementById("correoLogin").value.trim();
+      const clave = document.getElementById("claveLogin").value.trim();
 
-    totalElement.textContent = total;
-
-    function procesarPago() {
-      const metodo = document.getElementById("metodoPago").value;
-
-      if (!metodo) {
-        alert("Por favor selecciona un método de pago.");
+      if (!correo || !clave) {
+        alert("Debes ingresar tu correo y clave");
         return;
       }
 
-      localStorage.setItem("metodoPago", metodo);
+      const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+      const user = usuarios.find(u => u.correo === correo && u.clave === clave);
 
-      if (metodo === "WebPay") {
-        window.location.href = "webpay.html";
+      if (user) {
+        localStorage.setItem("usuario", JSON.stringify(user));
+        alert("Bienvenido/a " + user.nombre);
+        window.location.href = "pago.html";
       } else {
-        // Para métodos distintos de WebPay, enviamos directamente
-        enviarWhatsApp();
+        alert("Usuario o clave incorrecta");
       }
-    }
+    });
 
-    function enviarWhatsApp() {
-      const metodoPago = localStorage.getItem("metodoPago");
-      let mensaje = `🟣 Pedido Futbuseras FC:%0A`;
+    // REGISTRO
+    document.getElementById("registroForm").addEventListener("submit", function(e) {
+      e.preventDefault();
 
-      carrito.forEach(p => {
-        mensaje += `- ${p.nombre}: $${p.precio} CLP%0A`;
-      });
+      const rut = document.getElementById("rut").value.trim();
+      const nombre = document.getElementById("nombre").value.trim();
+      const apellido = document.getElementById("apellido").value.trim();
+      const correo = document.getElementById("correo").value.trim();
+      const telefono = document.getElementById("telefono").value.trim();
+      const clave = document.getElementById("clave").value.trim();
 
-      mensaje += `%0ATotal: $${total} CLP%0A`;
-      mensaje += `%0ADatos del Cliente:%0A`;
+      const errores = [];
 
-      if (usuario.rut) {
-        mensaje += `Nombre: ${usuario.nombre} ${usuario.apellido}%0A`;
-        mensaje += `RUT: ${usuario.rut}%0A`;
-        mensaje += `Correo: ${usuario.correo}%0A`;
-        mensaje += `Teléfono: ${usuario.telefono}%0A`;
-      } else {
-        mensaje += `Correo: ${usuario.correo || "No disponible"}%0A`;
+      if (!/^\d{8}-[\dkK]$/.test(rut)) {
+        errores.push("El RUT debe tener el formato 12345678-9");
       }
 
-      mensaje += `%0AMedio de Pago: ${metodoPago}`;
+      if (!/^[A-Za-zÁÉÍÓÚÑáéíóúñ ]+$/.test(nombre)) {
+        errores.push("El nombre solo debe contener letras");
+      }
 
-      const numero = "56975357329";
-      const url = `https://wa.me/${numero}?text=${mensaje}`;
-      window.open(url, "_blank");
-    }
+      if (!/^[A-Za-zÁÉÍÓÚÑáéíóúñ ]+$/.test(apellido)) {
+        errores.push("El apellido solo debe contener letras");
+      }
+
+      if (!/^\d{9}$/.test(telefono)) {
+        errores.push("El teléfono debe tener 9 dígitos");
+      }
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
+        errores.push("Correo inválido");
+      }
+
+      if (!clave || clave.length < 4) {
+        errores.push("La clave debe tener al menos 4 caracteres");
+      }
+
+      const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+      const existe = usuarios.some(u => u.correo === correo);
+
+      if (existe) {
+        errores.push("El usuario ya existe. Recupera tu clave.");
+      }
+
+      if (errores.length > 0) {
+        alert(errores.join("\n"));
+        return;
+      }
+
+      const nuevoUsuario = { rut, nombre, apellido, correo, telefono, clave };
+      usuarios.push(nuevoUsuario);
+      localStorage.setItem("usuarios", JSON.stringify(usuarios));
+      localStorage.setItem("usuario", JSON.stringify(nuevoUsuario));
+
+      alert("Cuenta creada correctamente. Serás redirigido al pago.");
+      window.location.href = "pago.html";
+    });
   </script>
 </body>
 </html>
-
