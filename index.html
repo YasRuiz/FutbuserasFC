@@ -85,16 +85,14 @@
         <p>Blanco con acentos morados y esmeraldas, elegante y vibrante para cada visita.</p>
       </div>
     </div>
-    <div class="text-center">
-      <a href="#galeria" class="btn-galeria">Ver Galería de Fotos</a>
-    </div>
   </section>
 
-<div class="text-center" style="margin-top: 30px;">
-  <a href="tienda.html" target="_blank" class="btn-galeria" style="font-size: 1.2em; padding: 15px 30px;">
-    🛒 Ir a la Tienda
-  </a>
-</div>
+  <!-- BOTÓN TIENDA -->
+  <div class="text-center" style="margin-top: 30px;">
+    <a href="tienda.html" target="_blank" class="btn-galeria" style="font-size: 1.2em; padding: 15px 30px;">
+      🛒 Ir a la Tienda
+    </a>
+  </div>
 
   <!-- GALERÍA -->
   <section id="galeria">
@@ -141,7 +139,6 @@
 
   <!-- SCRIPTS -->
   <script>
-    // Carrusel
     const images = document.querySelectorAll('.carousel img');
     let index = 0;
     function showNextImage() {
@@ -151,7 +148,6 @@
     }
     setInterval(showNextImage, 3000);
 
-    // Menú hamburguesa
     const toggle = document.getElementById('menu-toggle');
     document.querySelectorAll('.menu-links a').forEach(link => {
       link.addEventListener('click', () => {
@@ -167,7 +163,6 @@
       }
     });
 
-    // Modal de imágenes
     function mostrarImagen(img) {
       const modal = document.getElementById("modal");
       const imgGrande = document.getElementById("img-grande");
@@ -175,6 +170,7 @@
       imgGrande.src = img.src;
       imgGrande.alt = img.alt;
     }
+
     function cerrarModal() {
       document.getElementById("modal").style.display = "none";
     }
