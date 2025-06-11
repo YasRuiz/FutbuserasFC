@@ -223,14 +223,19 @@
       actualizarCarrito();
     }
 
-    function confirmarCompra() {
-      if (carrito.length === 0) {
-        alert("El carrito está vacío.");
-        return;
-      }
-      localStorage.setItem("carrito", JSON.stringify(carrito));
-      window.location.href = "login.html";
+  
+  function confirmarCompra() {
+    if (carrito.length === 0) {
+      alert("El carrito está vacío.");
+      return;
     }
+
+    // Guarda el carrito en localStorage
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    // Redirige al login
+    window.location.href = "login.html";
+  }
 
     function actualizarCarrito() {
       const lista = document.getElementById("lista-carrito");
