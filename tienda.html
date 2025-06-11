@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tienda - Futbuseras FC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <img src="img/Logo-Futbuseras-FC.jpg" alt="Logo Futbuseras FC" class="logo-header" />
+    <h1>Tienda Oficial Futbuseras FC</h1>
+    <p class="lema">"Compra con pasión, apoya con el corazón"</p>
+  </header>
+
+  <section>
+    <h2>Productos</h2>
+    <div class="productos">
+      <div class="producto">
+        <img src="img/camisa-local.jpg" alt="Camiseta Local" />
+        <h3>Camiseta Local</h3>
+        <p>$15.000 CLP</p>
+        <button onclick="agregarAlCarrito('Camiseta Local', 15000)">Agregar al carrito</button>
+      </div>
+      <div class="producto">
+        <img src="img/camisa-visitante.png" alt="Camiseta Visitante" />
+        <h3>Camiseta Visitante</h3>
+        <p>$15.000 CLP</p>
+        <button onclick="agregarAlCarrito('Camiseta Visitante', 15000)">Agregar al carrito</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="carrito" class="carrito">
+    <h2>Carrito de Compras</h2>
+    <ul id="lista-carrito"></ul>
+    <p>Total: $<span id="total">0</span> CLP</p>
+    <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+    <button onclick="confirmarCompra()">Confirmar Compra</button>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Futbuseras FC - Todos los derechos reservados</p>
+  </footer>
+
+  <script>
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    let total = carrito.reduce((acc, item) => acc + item.precio, 0);
+
+    function agregarAlCarrito(nombre, precio) {
+      const id = Date.now();
+      carrito.push({ id, nombre, precio });
+      total += precio;
+      actualizarCarrito();
+    }
+
+    function eliminarDelCarrito(idProducto) {
+      const index = carrito.findIndex(item => item.id === idProducto);
+      if (index !== -1) {
+        total -= carrito[index].precio;
+        carrito.splice(index, 1);
+        actualizarCarrito();
+      }
+    }
+
+    function vaciarCarrito() {
+      carrito = [];
+      total = 0;
+      actualizarCarrito();
+    }
+
+    function confirmarCompra() {
+      if (carrito.length === 0) {
+        alert("El carrito está vacío.");
+        return;
+      }
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      window.location.href = "login.html";
+    }
+
+    function actualizarCarrito() {
+      const lista = document.getElementById("lista-carrito");
+      lista.innerHTML = "";
+      carrito.forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          ${item.nombre} - $${item.precio} CLP
+          <button onclick="eliminarDelCarrito(${item.id})" style="margin-left:10px;background:#ff00cc;color:white;border:none;border-radius:4px;cursor:pointer;">X</button>
+        `;
+        lista.appendChild(li);
+      });
+      document.getElementById("total").textContent = total;
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+    }
+
+    // Inicializar
+    actualizarCarrito();
+  </script>
+</body>
+</html>
