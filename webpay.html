@@ -2,39 +2,30 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>WebPay - Selección de Banco</title>
+  <title>Simulación WebPay</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>Selecciona tu banco</h1>
-
-  <section>
+  <form id="formBanco">
     <select id="banco">
-      <option value="">-- Selecciona un banco --</option>
-      <option>BancoEstado</option>
-      <option>Banco de Chile</option>
-      <option>BCI</option>
-      <option>Santander</option>
-      <option>Scotiabank</option>
+      <option value="BancoEstado">Banco Estado</option>
+      <option value="Santander">Santander</option>
+      <option value="BCI">BCI</option>
+      <option value="Scotiabank">Scotiabank</option>
     </select>
-
-    <button onclick="pagar()">Pagar</button>
-  </section>
+    <br><br>
+    <button type="submit">Simular Pago</button>
+  </form>
 
   <script>
-    function pagar() {
+    document.getElementById("formBanco").addEventListener("submit", function(e) {
+      e.preventDefault();
       const banco = document.getElementById("banco").value;
-      if (!banco) {
-        alert("Debes seleccionar un banco.");
-        return;
-      }
-
-      // Simula una espera de pago exitoso
-      setTimeout(() => {
-        window.location.href = "pago-exitoso.html";
-      }, 1500);
-    }
+      localStorage.setItem("bancoSeleccionado", banco);
+      window.location.href = "pago-exitoso.html";
+    });
   </script>
 </body>
 </html>
