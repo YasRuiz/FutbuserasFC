@@ -1,24 +1,34 @@
 <!DOCTYPE html><html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Resumen de Compra - Futbuseras FC</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Pago - Futbuseras FC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <section class="carrito">
-    <h2>Resumen de tu compra</h2>
-    <ul id="resumen"></ul>
-    <p>Total: $<span id="total">0</span> CLP</p><h3>Método de Pago</h3>
-<select id="metodoPago">
-  <option value="WebPay">WebPay</option>
-  <option value="Transferencia">Transferencia</option>
-  <option value="Efectivo">Efectivo</option>
-</select>
-
-<button onclick="enviarWhatsApp()">Confirmar y Enviar Pedido</button>
-
-  </section>  <script>
+  <h1>Resumen de tu compra</h1>
+  <ul id="resumen"></ul>
+  <p>Total: $<span id="total">0</span> CLP</p>  <h2>Selecciona el medio de pago</h2>
+  <select id="metodoPago">
+    <option value="">-- Selecciona --</option>
+    <option value="WebPay">WebPay</option>
+    <option value="Transferencia">Transferencia</option>
+    <option value="Efectivo">Efectivo</option>
+  </select>
+  <br><br>
+  <button onclick="procesarPago()">Confirmar y Pagar</button>  <!-- Modal WebPay -->  <div id="webpayModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center;">
+    <div style="background:#222; padding:20px; border-radius:8px; text-align:center; max-width:300px; color:white;">
+      <h3>Selecciona tu banco</h3>
+      <select id="banco">
+        <option value="">-- Banco --</option>
+        <option value="BancoEstado">BancoEstado</option>
+        <option value="Santander">Santander</option>
+        <option value="BCI">BCI</option>
+      </select>
+      <br><br>
+      <button onclick="confirmarWebPay()">Simular Pago</button>
+    </div>
+  </div>  <script>
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     const usuario = JSON.parse(localStorage.getItem("usuarioActivo")) || {};
     const resumen = document.getElementById("resumen");
@@ -34,8 +44,31 @@
 
     totalElement.textContent = total;
 
-    function enviarWhatsApp() {
-      const metodoPago = document.getElementById("metodoPago").value;
+    function procesarPago() {
+      const metodo = document.getElementById("metodoPago").value;
+      if (!metodo) {
+        alert("Selecciona un método de pago");
+        return;
+      }
+      if (metodo === "WebPay") {
+        document.getElementById("webpayModal").style.display = "flex";
+      } else {
+        enviarWhatsApp(metodo);
+      }
+    }
+
+    function confirmarWebPay() {
+      const banco = document.getElementById("banco").value;
+      if (!banco) {
+        alert("Selecciona un banco para continuar");
+        return;
+      }
+      alert("Pago exitoso con WebPay (simulado)");
+      document.getElementById("webpayModal").style.display = "none";
+      enviarWhatsApp("WebPay");
+    }
+
+    function enviarWhatsApp(metodoPago) {
       let mensaje = `🟣 Pedido Futbuseras FC:%0A`;
 
       carrito.forEach(p => {
@@ -44,15 +77,4 @@
 
       mensaje += `%0ATotal: $${total} CLP%0A`;
       mensaje += `%0ADatos del Cliente:%0A`;
-      mensaje += `Nombre: ${usuario.nombre || 'N/A'} ${usuario.apellido || ''}%0A`;
-      mensaje += `RUT: ${usuario.rut || 'N/A'}%0A`;
-      mensaje += `Correo: ${usuario.correo || 'N/A'}%0A`;
-      mensaje += `Teléfono: ${usuario.telefono || 'N/A'}%0A`;
-      mensaje += `%0AMetodo de Pago: ${metodoPago}`;
-
-      const numero = "56975357329";
-      const url = `https://wa.me/${numero}?text=${mensaje}`;
-      window.open(url, "_blank");
-    }
-  </script></body>
-</html>
+      mensaje +=
