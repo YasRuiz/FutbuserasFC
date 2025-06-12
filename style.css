@@ -826,4 +826,40 @@ p#total {
   }
 }
 
+/* Botón flotante simple */
+#modo-oscuro-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+#modo-oscuro-toggle:hover {
+  transform: scale(1.2);
+}
+
+/* Tema oscuro */
+body.modo-oscuro {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+}
+body.modo-oscuro header,
+body.modo-oscuro footer {
+  background-color: #2e2e2e;
+}
+body.modo-oscuro a {
+  color: #8cd4ff;
+}
+body.modo-oscuro .menu {
+  background-color: #333;
+}
+body.modo-oscuro input,
+body.modo-oscuro textarea {
+  background-color: #444;
+  color: #fff;
+  border: 1px solid #888;
+}
 
