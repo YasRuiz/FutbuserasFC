@@ -1,91 +1,59 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Pago - Futbuseras FC</title>
+  <title>Resumen de Compra</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Resumen de tu compra</h1>
-  <ul id="resumen"></ul>
-  <p>Total: $<span id="total">0</span> CLP</p>  <h2>Selecciona el medio de pago</h2>
-  <select id="metodoPago">
-    <option value="">-- Selecciona --</option>
-    <option value="WebPay">WebPay</option>
-    <option value="Transferencia">Transferencia</option>
-    <option value="Efectivo">Efectivo</option>
-  </select>
-  <br><br>
-  <button onclick="procesarPago()">Confirmar y Pagar</button>  <!-- Modal WebPay -->  <div id="webpayModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center;">
-    <div style="background:#222; padding:20px; border-radius:8px; text-align:center; max-width:300px; color:white;">
-      <h3>Selecciona tu banco</h3>
-      <select id="banco">
-        <option value="">-- Banco --</option>
-        <option value="BancoEstado">BancoEstado</option>
-        <option value="Santander">Santander</option>
-        <option value="BCI">BCI</option>
-      </select>
-      <br><br>
-      <button onclick="confirmarWebPay()">Simular Pago</button>
-    </div>
-  </div>  <script>
+
+  <section>
+    <h1>Resumen de Compra</h1>
+    <ul id="resumen"></ul>
+    <p id="total"></p>
+
+    <h2>Método de Pago</h2>
+    <select id="metodoPago">
+      <option value="WebPay">WebPay</option>
+      <option value="Transferencia">Transferencia Bancaria</option>
+    </select>
+
+    <button onclick="confirmarPago()">Pagar</button>
+  </section>
+
+  <script>
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    const usuario = JSON.parse(localStorage.getItem("usuarioActivo")) || {};
     const resumen = document.getElementById("resumen");
-    const totalElement = document.getElementById("total");
+    const totalElemento = document.getElementById("total");
     let total = 0;
 
-    carrito.forEach(item => {
+    // Mostrar productos
+    carrito.forEach(producto => {
       const li = document.createElement("li");
-      li.textContent = `${item.nombre} - $${item.precio} CLP`;
+      li.textContent = `${producto.nombre} - $${producto.precio} CLP`;
       resumen.appendChild(li);
-      total += item.precio;
+      total += producto.precio;
     });
 
-    totalElement.textContent = total;
+    totalElemento.textContent = `Total: $${total} CLP`;
 
-    function procesarPago() {
+    function confirmarPago() {
       const metodo = document.getElementById("metodoPago").value;
-      if (!metodo) {
-        alert("Selecciona un método de pago");
+      localStorage.setItem("metodoPago", metodo);
+
+      if (carrito.length === 0) {
+        alert("El carrito está vacío.");
         return;
       }
+
       if (metodo === "WebPay") {
-        document.getElementById("webpayModal").style.display = "flex";
+        window.location.href = "webpay.html";
       } else {
-        enviarWhatsApp(metodo);
+        window.location.href = "pago-exitoso.html";
       }
     }
+  </script>
 
-    function confirmarWebPay() {
-      const banco = document.getElementById("banco").value;
-      if (!banco) {
-        alert("Selecciona un banco para continuar");
-        return;
-      }
-      alert("Pago exitoso con WebPay (simulado)");
-      document.getElementById("webpayModal").style.display = "none";
-      enviarWhatsApp("WebPay");
-    }
-
-    function enviarWhatsApp(metodoPago) {
-      let mensaje = `🟣 Pedido Futbuseras FC:%0A`;
-
-      carrito.forEach(p => {
-        mensaje += `- ${p.nombre}: $${p.precio} CLP%0A`;
-      });
-
-      mensaje += `%0ATotal: $${total} CLP%0A`;
-      mensaje += `%0ADatos del Cliente:%0A`;
-      mensaje += `Nombre: ${usuario.nombre} ${usuario.apellido}%0A`;
-      mensaje += `RUT: ${usuario.rut}%0A`;
-      mensaje += `Correo: ${usuario.correo}%0A`;
-      mensaje += `Teléfono: ${usuario.telefono}%0A`;
-      mensaje += `%0AMedio de Pago: ${metodoPago}`;
-
-      const numero = "56975357329";
-      const url = `https://wa.me/${numero}?text=${mensaje}`;
-      window.open(url, "_blank");
-    }
-  </script></body>
+</body>
 </html>
