@@ -1,117 +1,58 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Iniciar Sesión o Crear Cuenta</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resumen de Compra - Futbuseras FC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <section class="carrito">
+    <h2>Resumen de tu compra</h2>
+    <ul id="resumen"></ul>
+    <p>Total: $<span id="total">0</span> CLP</p><h3>Método de Pago</h3>
+<select id="metodoPago">
+  <option value="WebPay">WebPay</option>
+  <option value="Transferencia">Transferencia</option>
+  <option value="Efectivo">Efectivo</option>
+</select>
 
-  <section>
-    <h1>Iniciar Sesión</h1>
-    <form id="loginForm">
-      <input type="text" id="correoLogin" placeholder="Correo">
-      <input type="password" id="claveLogin" placeholder="Clave">
-      <button type="submit">Ingresar</button>
-    </form>
-  </section>
+<button onclick="enviarWhatsApp()">Confirmar y Enviar Pedido</button>
 
-  <section>
-    <h2>¿No tienes cuenta? Regístrate</h2>
-    <form id="registroForm">
-      <input type="text" id="rut" placeholder="RUT (ej: 12345678-9)">
-      <input type="text" id="nombre" placeholder="Nombre">
-      <input type="text" id="apellido" placeholder="Apellido">
-      <input type="text" id="correo" placeholder="Correo">
-      <input type="text" id="telefono" placeholder="Teléfono (solo números)">
-      <input type="password" id="clave" placeholder="Clave">
-      <button type="submit">Crear Cuenta</button>
-    </form>
-  </section>
+  </section>  <script>
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const usuario = JSON.parse(localStorage.getItem("usuarioActivo")) || {};
+    const resumen = document.getElementById("resumen");
+    const totalElement = document.getElementById("total");
+    let total = 0;
 
-  <script>
-    // LOGIN
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const correo = document.getElementById("correoLogin").value.trim();
-      const clave = document.getElementById("claveLogin").value.trim();
-
-      if (!correo || !clave) {
-        alert("Debes ingresar tu correo y clave");
-        return;
-      }
-
-      const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-      const user = usuarios.find(u => u.correo === correo && u.clave === clave);
-
-      if (user) {
-        localStorage.setItem("usuario", JSON.stringify(user));
-        alert("Bienvenido/a " + user.nombre);
-        window.location.href = "pago.html";
-      } else {
-        alert("Usuario o clave incorrecta");
-      }
+    carrito.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.nombre} - $${item.precio} CLP`;
+      resumen.appendChild(li);
+      total += item.precio;
     });
 
-    // REGISTRO
-    document.getElementById("registroForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+    totalElement.textContent = total;
 
-      const rut = document.getElementById("rut").value.trim();
-      const nombre = document.getElementById("nombre").value.trim();
-      const apellido = document.getElementById("apellido").value.trim();
-      const correo = document.getElementById("correo").value.trim();
-      const telefono = document.getElementById("telefono").value.trim();
-      const clave = document.getElementById("clave").value.trim();
+    function enviarWhatsApp() {
+      const metodoPago = document.getElementById("metodoPago").value;
+      let mensaje = `🟣 Pedido Futbuseras FC:%0A`;
 
-      const errores = [];
+      carrito.forEach(p => {
+        mensaje += `- ${p.nombre}: $${p.precio} CLP%0A`;
+      });
 
-      if (!/^\d{8}-[\dkK]$/.test(rut)) {
-        errores.push("El RUT debe tener el formato 12345678-9");
-      }
+      mensaje += `%0ATotal: $${total} CLP%0A`;
+      mensaje += `%0ADatos del Cliente:%0A`;
+      mensaje += `Nombre: ${usuario.nombre || 'N/A'} ${usuario.apellido || ''}%0A`;
+      mensaje += `RUT: ${usuario.rut || 'N/A'}%0A`;
+      mensaje += `Correo: ${usuario.correo || 'N/A'}%0A`;
+      mensaje += `Teléfono: ${usuario.telefono || 'N/A'}%0A`;
+      mensaje += `%0AMetodo de Pago: ${metodoPago}`;
 
-      if (!/^[A-Za-zÁÉÍÓÚÑáéíóúñ ]+$/.test(nombre)) {
-        errores.push("El nombre solo debe contener letras");
-      }
-
-      if (!/^[A-Za-zÁÉÍÓÚÑáéíóúñ ]+$/.test(apellido)) {
-        errores.push("El apellido solo debe contener letras");
-      }
-
-      if (!/^\d{9}$/.test(telefono)) {
-        errores.push("El teléfono debe tener 9 dígitos");
-      }
-
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
-        errores.push("Correo inválido");
-      }
-
-      if (!clave || clave.length < 4) {
-        errores.push("La clave debe tener al menos 4 caracteres");
-      }
-
-      const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-      const existe = usuarios.some(u => u.correo === correo);
-
-      if (existe) {
-        errores.push("El usuario ya existe. Recupera tu clave.");
-      }
-
-      if (errores.length > 0) {
-        alert(errores.join("\n"));
-        return;
-      }
-
-      const nuevoUsuario = { rut, nombre, apellido, correo, telefono, clave };
-      usuarios.push(nuevoUsuario);
-      localStorage.setItem("usuarios", JSON.stringify(usuarios));
-      localStorage.setItem("usuario", JSON.stringify(nuevoUsuario));
-
-      alert("Cuenta creada correctamente. Serás redirigido al pago.");
-      window.location.href = "pago.html";
-    });
-  </script>
-</body>
+      const numero = "56975357329";
+      const url = `https://wa.me/${numero}?text=${mensaje}`;
+      window.open(url, "_blank");
+    }
+  </script></body>
 </html>
