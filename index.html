@@ -174,21 +174,6 @@
     function cerrarModal() {
       document.getElementById("modal").style.display = "none";
     }
-  const botonModoOscuro = document.getElementById('modo-oscuro-toggle');
-  const body = document.body;
-
-  // Revisar si hay modo oscuro guardado
-  if (localStorage.getItem('modoOscuro') === 'true') {
-    body.classList.add('modo-oscuro');
-    botonModoOscuro.textContent = '☀️';
-  }
-
-  botonModoOscuro.addEventListener('click', () => {
-    body.classList.toggle('modo-oscuro');
-    const estaOscuro = body.classList.contains('modo-oscuro');
-    localStorage.setItem('modoOscuro', estaOscuro);
-    botonModoOscuro.textContent = estaOscuro ? '☀️' : '🌙';
-  });
 </script>
 </body>
 </html>
