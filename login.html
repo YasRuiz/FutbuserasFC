@@ -31,7 +31,6 @@
   </section>
 
   <script>
-    // Simulación de base de datos local
     const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
     function validarRUT(rut) {
@@ -45,8 +44,8 @@
     // Login
     document.getElementById("form-login").addEventListener("submit", function (e) {
       e.preventDefault();
-      const email = document.getElementById("loginEmail").value;
-      const clave = document.getElementById("loginClave").value;
+      const email = document.getElementById("loginEmail").value.trim();
+      const clave = document.getElementById("loginClave").value.trim();
 
       const usuario = usuarios.find(u => u.correo === email && u.clave === clave);
       if (usuario) {
@@ -61,12 +60,12 @@
     document.getElementById("form-crear-cuenta").addEventListener("submit", function (e) {
       e.preventDefault();
 
-      const rut = document.getElementById("rut").value;
-      const nombre = document.getElementById("nombre").value;
-      const apellido = document.getElementById("apellido").value;
-      const correo = document.getElementById("correoNuevo").value;
-      const telefono = document.getElementById("telefono").value;
-      const clave = document.getElementById("claveNueva").value;
+      const rut = document.getElementById("rut").value.trim();
+      const nombre = document.getElementById("nombre").value.trim();
+      const apellido = document.getElementById("apellido").value.trim();
+      const correo = document.getElementById("correoNuevo").value.trim();
+      const telefono = document.getElementById("telefono").value.trim();
+      const clave = document.getElementById("claveNueva").value.trim();
       const mensaje = document.getElementById("mensaje-usuario");
 
       if (!validarRUT(rut)) {
@@ -79,6 +78,11 @@
         return;
       }
 
+      if (!/^\d{9,15}$/.test(telefono)) {
+        mensaje.textContent = "El teléfono debe contener solo números (entre 9 y 15 dígitos).";
+        return;
+      }
+
       if (usuarios.find(u => u.rut === rut || u.correo === correo)) {
         mensaje.textContent = "Usuario ya existe. Recupera tu clave.";
         return;
@@ -87,7 +91,12 @@
       const nuevoUsuario = { rut, nombre, apellido, correo, telefono, clave };
       usuarios.push(nuevoUsuario);
       localStorage.setItem("usuarios", JSON.stringify(usuarios));
-      mensaje.textContent = "Cuenta creada con éxito. Ahora puedes iniciar sesión.";
+      localStorage.setItem("usuarioActivo", JSON.stringify(nuevoUsuario));
+
+      mensaje.textContent = "Cuenta creada con éxito. Redirigiendo al pago...";
+      setTimeout(() => {
+        window.location.href = "pago.html";
+      }, 1500);
     });
   </script>
 </body>
