@@ -19,7 +19,7 @@
   <section>
     <h2>¿No tienes cuenta? Crea una</h2>
     <form id="form-crear-cuenta">
-      <input type="text" id="rut" placeholder="RUT (Ej: 12345678-9)" maxlength="10" required />
+      <input type="text" id="rut" placeholder="RUT (Ej: 12345678-9 o 12345678-K)" maxlength="10" required />
       <input type="text" id="nombre" placeholder="Nombre" required />
       <input type="text" id="apellido" placeholder="Apellido" required />
       <input type="email" id="correoNuevo" placeholder="Correo electrónico" required />
@@ -34,14 +34,13 @@
     const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
     function validarRUT(rut) {
-      return /^\d{8}-\d{1}$/.test(rut);
+      return /^\d{7,8}-[\dkK]$/.test(rut);
     }
 
     function soloLetras(valor) {
       return /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(valor);
     }
 
-    // Función para detectar números consecutivos
     function tieneNumerosConsecutivos(texto) {
       for (let i = 0; i < texto.length - 2; i++) {
         const a = texto.charCodeAt(i);
@@ -60,28 +59,7 @@
       return !isNaN(c) && c >= '0' && c <= '9';
     }
 
-    /*
-    // Si quisieras también bloquear letras consecutivas como 'abc':
-    function tieneLetrasConsecutivas(texto) {
-      for (let i = 0; i < texto.length - 2; i++) {
-        const a = texto.charCodeAt(i);
-        const b = texto.charCodeAt(i + 1);
-        const c = texto.charCodeAt(i + 2);
-        if (esLetra(texto[i]) && esLetra(texto[i + 1]) && esLetra(texto[i + 2])) {
-          if (b === a + 1 && c === b + 1) {
-            return true;
-          }
-        }
-      }
-      return false;
-    }
-
-    function esLetra(c) {
-      return /^[a-zA-Z]$/.test(c);
-    }
-    */
-
-    // Login
+    // LOGIN
     document.getElementById("form-login").addEventListener("submit", function (e) {
       e.preventDefault();
       const email = document.getElementById("loginEmail").value.trim();
@@ -96,7 +74,7 @@
       }
     });
 
-    // Crear cuenta
+    // CREAR CUENTA
     document.getElementById("form-crear-cuenta").addEventListener("submit", function (e) {
       e.preventDefault();
 
@@ -109,7 +87,7 @@
       const mensaje = document.getElementById("mensaje-usuario");
 
       if (!validarRUT(rut)) {
-        mensaje.textContent = "Formato de RUT inválido. Debe ser 8 dígitos, guion, 1 dígito (ej: 12345678-9).";
+        mensaje.textContent = "Formato de RUT inválido. Debe ser 7 u 8 dígitos + guion + número o K (ej: 12345678-9 o 12345678-K).";
         return;
       }
 
@@ -125,11 +103,11 @@
 
       if (tieneNumerosConsecutivos(clave)) {
         mensaje.textContent = "";
-        alert("La contraseña contiene números consecutivos. Usa una más segura (por ejemplo: evita 123, 456).");
+        alert("La contraseña contiene números consecutivos. Usa una más segura (evita secuencias como 123, 456, etc).");
         return;
       }
 
-      if (usuarios.find(u => u.rut === rut || u.correo === correo)) {
+      if (usuarios.find(u => u.rut.toLowerCase() === rut.toLowerCase() || u.correo.toLowerCase() === correo.toLowerCase())) {
         mensaje.textContent = "Usuario ya existe. Recupera tu clave.";
         return;
       }
