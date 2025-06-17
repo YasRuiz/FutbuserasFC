@@ -41,6 +41,46 @@
       return /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(valor);
     }
 
+    // Función para detectar números consecutivos
+    function tieneNumerosConsecutivos(texto) {
+      for (let i = 0; i < texto.length - 2; i++) {
+        const a = texto.charCodeAt(i);
+        const b = texto.charCodeAt(i + 1);
+        const c = texto.charCodeAt(i + 2);
+        if (esNumero(texto[i]) && esNumero(texto[i + 1]) && esNumero(texto[i + 2])) {
+          if (b === a + 1 && c === b + 1) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    function esNumero(c) {
+      return !isNaN(c) && c >= '0' && c <= '9';
+    }
+
+    /*
+    // Si quisieras también bloquear letras consecutivas como 'abc':
+    function tieneLetrasConsecutivas(texto) {
+      for (let i = 0; i < texto.length - 2; i++) {
+        const a = texto.charCodeAt(i);
+        const b = texto.charCodeAt(i + 1);
+        const c = texto.charCodeAt(i + 2);
+        if (esLetra(texto[i]) && esLetra(texto[i + 1]) && esLetra(texto[i + 2])) {
+          if (b === a + 1 && c === b + 1) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    function esLetra(c) {
+      return /^[a-zA-Z]$/.test(c);
+    }
+    */
+
     // Login
     document.getElementById("form-login").addEventListener("submit", function (e) {
       e.preventDefault();
@@ -80,6 +120,12 @@
 
       if (!/^\d{9,15}$/.test(telefono)) {
         mensaje.textContent = "El teléfono debe contener solo números (entre 9 y 15 dígitos).";
+        return;
+      }
+
+      if (tieneNumerosConsecutivos(clave)) {
+        mensaje.textContent = "";
+        alert("La contraseña contiene números consecutivos. Usa una más segura (por ejemplo: evita 123, 456).");
         return;
       }
 
