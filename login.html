@@ -58,6 +58,24 @@
     function esNumero(c) {
       return !isNaN(c) && c >= '0' && c <= '9';
     }
+    // Para bloquear letras consecutivas como 'abc':
+    function tieneLetrasConsecutivas(texto) {
+      for (let i = 0; i < texto.length - 2; i++) {
+        const a = texto.charCodeAt(i);
+        const b = texto.charCodeAt(i + 1);
+        const c = texto.charCodeAt(i + 2);
+        if (esLetra(texto[i]) && esLetra(texto[i + 1]) && esLetra(texto[i + 2])) {
+          if (b === a + 1 && c === b + 1) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    function esLetra(c) {
+      return /^[a-zA-Z]$/.test(c);
+    }
 
     // LOGIN
     document.getElementById("form-login").addEventListener("submit", function (e) {
