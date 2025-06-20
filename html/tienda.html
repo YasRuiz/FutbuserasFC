@@ -8,14 +8,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Encabezado de la tienda -->
+
+  <!-- ENCABEZADO -->
   <header>
     <img src="../img/Logo-Futbuseras-FC.jpg" alt="Logo Futbuseras FC" class="logo-header" />
     <h1>Tienda Oficial Futbuseras FC</h1>
+    <div class="pelota-wrapper">
+      <div class="pelota-container">
+        <div class="estela estela-1"></div>
+        <div class="estela estela-2"></div>
+        <div class="estela estela-3"></div>
+        <img src="../img/pelota.png" alt="Pelota" class="pelota" />
+      </div>
+    </div>
     <p class="lema">"Compra con pasión, apoya con el corazón"</p>
   </header>
 
-  <!-- Productos disponibles -->
+  <!-- PRODUCTOS -->
   <section>
     <h2>Productos</h2>
     <div class="productos">
@@ -34,26 +43,28 @@
     </div>
   </section>
 
-  <!-- Carrito de compras -->
+  <!-- CARRITO -->
   <div id="carrito" class="carrito">
     <h2>Carrito de Compras</h2>
     <ul id="lista-carrito"></ul>
     <p>Total: $<span id="total">0</span> CLP</p>
-    <button onclick="vaciarCarrito()">Vaciar Carrito</button>
-    <button onclick="confirmarCompra()">Confirmar Compra</button>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+      <button onclick="confirmarCompra()">Confirmar Compra</button>
+    </div>
   </div>
 
-  <!-- Botón para regresar al inicio -->
+  <!-- BOTÓN REGRESAR -->
   <div class="btn-regresar">
     <a href="../index.html">← Regresar al Inicio</a>
   </div>
 
-  <!-- Pie de página -->
+  <!-- PIE DE PÁGINA -->
   <footer>
     <p>&copy; 2025 Futbuseras FC - Todos los derechos reservados</p>
   </footer>
 
-  <!-- Script funcionalidad del carrito -->
+  <!-- SCRIPTS -->
   <script>
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     let total = carrito.reduce((acc, item) => acc + item.precio, 0);
@@ -86,7 +97,7 @@
         return;
       }
       localStorage.setItem("carrito", JSON.stringify(carrito));
-      window.location.href = "login.html"; // redirige a login
+      window.location.href = "login.html"; // redirige a login (está en la misma carpeta)
     }
 
     function actualizarCarrito() {

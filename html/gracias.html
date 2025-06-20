@@ -3,29 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <title>Gracias por tu mensaje</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Enlace corregido al CSS externo -->
-  <link rel="stylesheet" href="/css/style.css">
-
-  <!-- Fuente personalizada desde Google Fonts -->
+  <!-- Enlace al CSS y fuente -->
+  <link rel="stylesheet" href="../css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <!-- ENCABEZADO: logo y título -->
-  <header>
-    <!-- Imagen corregida con ruta relativa válida -->
-    <img src="../img/Logo-Futbuseras-FC.jpg" alt="Logo Futbuseras FC" class="logo-header">
 
+  <!-- ENCABEZADO -->
+  <header>
+    <img src="../img/Logo-Futbuseras-FC.jpg" alt="Logo Futbuseras FC" class="logo-header" />
     <h1>¡Gracias por contactarnos!</h1>
+    <div class="pelota-wrapper">
+      <div class="pelota-container">
+        <div class="estela estela-1"></div>
+        <div class="estela estela-2"></div>
+        <div class="estela estela-3"></div>
+        <img src="../img/pelota.png" alt="Pelota" class="pelota" />
+      </div>
+    </div>
+    <p class="lema">"Tu apoyo nos mueve más que nunca"</p>
   </header>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main>
+  <!-- MENSAJE DE CONFIRMACIÓN -->
+  <section style="text-align: center;">
     <p>Tu mensaje ha sido enviado correctamente. Te responderemos pronto.</p>
+    <div class="btn-regresar">
+      <a href="../index.html">← Volver al Inicio</a>
+    </div>
+  </section>
 
-    <!-- Enlace a index.html dentro de la misma carpeta -->
-    <a href="index.html" class="btn-volver">Volver al inicio</a>
-  </main>
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>&copy; 2025 Futbuseras FC - Todos los derechos reservados</p>
+  </footer>
+
 </body>
 </html>

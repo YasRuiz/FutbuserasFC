@@ -5,10 +5,26 @@
   <title>Iniciar o Crear Cuenta</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- Sección de inicio de sesión -->
+  <!-- ENCABEZADO -->
+  <header>
+    <img src="../img/Logo-Futbuseras-FC.jpg" alt="Logo Futbuseras FC" class="logo-header" />
+    <h1>Inicia sesión o crea tu cuenta</h1>
+    <div class="pelota-wrapper">
+      <div class="pelota-container">
+        <div class="estela estela-1"></div>
+        <div class="estela estela-2"></div>
+        <div class="estela estela-3"></div>
+        <img src="../img/pelota.png" alt="Pelota" class="pelota" />
+      </div>
+    </div>
+    <p class="lema">"Juega con pasión, compra con convicción"</p>
+  </header>
+
+  <!-- LOGIN -->
   <section>
     <h2>Ingresa a tu cuenta</h2>
     <form id="form-login">
@@ -16,10 +32,10 @@
       <input type="password" id="loginClave" placeholder="Contraseña" required minlength="6" />
       <button type="submit">Iniciar sesión</button>
     </form>
-    <p><a href="#" id="recuperar-link">¿Olvidaste tu contraseña?</a></p>
+    <p style="text-align:center;"><a href="#" id="recuperar-link">¿Olvidaste tu contraseña?</a></p>
   </section>
 
-  <!-- Sección para recuperar contraseña -->
+  <!-- RECUPERAR CONTRASEÑA -->
   <section id="recuperar-section" style="display: none;">
     <h2>Recuperar contraseña</h2>
     <form id="form-recuperar">
@@ -29,7 +45,7 @@
     <p id="mensaje-recuperar" style="color: green; text-align: center;"></p>
   </section>
 
-  <!-- Sección para crear cuenta nueva -->
+  <!-- CREAR CUENTA -->
   <section>
     <h2>¿No tienes cuenta? Crea una</h2>
     <form id="form-crear-cuenta">
@@ -44,12 +60,12 @@
     <p id="mensaje-usuario" style="color: #ff00cc; text-align: center;"></p>
   </section>
 
-  <!-- Botón para regresar a la página principal -->
+  <!-- BOTÓN REGRESAR -->
   <div class="btn-regresar">
     <a href="../index.html">← Regresar al Inicio</a>
   </div>
 
-  <!-- Script principal -->
+  <!-- SCRIPT -->
   <script>
     const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
@@ -67,23 +83,7 @@
         const b = texto.charCodeAt(i + 1);
         const c = texto.charCodeAt(i + 2);
         if (esNumero(texto[i]) && esNumero(texto[i + 1]) && esNumero(texto[i + 2])) {
-          if (b === a + 1 && c === b + 1) {
-            return true;
-          }
-        }
-      }
-      return false;
-    }
-
-    function tieneLetrasConsecutivas(texto) {
-      for (let i = 0; i < texto.length - 2; i++) {
-        const a = texto.charCodeAt(i);
-        const b = texto.charCodeAt(i + 1);
-        const c = texto.charCodeAt(i + 2);
-        if (esLetra(texto[i]) && esLetra(texto[i + 1]) && esLetra(texto[i + 2])) {
-          if (b === a + 1 && c === b + 1) {
-            return true;
-          }
+          if (b === a + 1 && c === b + 1) return true;
         }
       }
       return false;
@@ -102,7 +102,6 @@
       e.preventDefault();
       const email = document.getElementById("loginEmail").value.trim();
       const clave = document.getElementById("loginClave").value.trim();
-
       const usuario = usuarios.find(u => u.correo === email && u.clave === clave);
       if (usuario) {
         localStorage.setItem("usuarioActivo", JSON.stringify(usuario));
@@ -115,7 +114,6 @@
     // CREAR CUENTA
     document.getElementById("form-crear-cuenta").addEventListener("submit", function (e) {
       e.preventDefault();
-
       const rut = document.getElementById("rut").value.trim();
       const nombre = document.getElementById("nombre").value.trim();
       const apellido = document.getElementById("apellido").value.trim();
@@ -125,7 +123,7 @@
       const mensaje = document.getElementById("mensaje-usuario");
 
       if (!validarRUT(rut)) {
-        mensaje.textContent = "Formato de RUT inválido. Debe ser 7 u 8 dígitos + guion + número o K (ej: 12345678-9 o 12345678-K).";
+        mensaje.textContent = "Formato de RUT inválido.";
         return;
       }
 
@@ -141,7 +139,7 @@
 
       if (tieneNumerosConsecutivos(clave)) {
         mensaje.textContent = "";
-        alert("La contraseña contiene números consecutivos. Usa una más segura (evita secuencias como 123, 456, etc).");
+        alert("La contraseña contiene números consecutivos. Usa una más segura.");
         return;
       }
 
@@ -161,21 +159,19 @@
       }, 1500);
     });
 
-    // Mostrar formulario de recuperación
+    // Recuperar clave
     document.getElementById("recuperar-link").addEventListener("click", function (e) {
       e.preventDefault();
       document.getElementById("recuperar-section").style.display = "block";
       window.scrollTo(0, document.body.scrollHeight);
     });
 
-    // Recuperar contraseña
     document.getElementById("form-recuperar").addEventListener("submit", function (e) {
       e.preventDefault();
       const emailRecuperar = document.getElementById("recuperarEmail").value.trim();
       const mensajeRecuperar = document.getElementById("mensaje-recuperar");
 
       const usuario = usuarios.find(u => u.correo.toLowerCase() === emailRecuperar.toLowerCase());
-
       if (usuario) {
         mensajeRecuperar.style.color = "green";
         mensajeRecuperar.textContent = `Tu contraseña es: ${usuario.clave}`;
@@ -187,4 +183,3 @@
   </script>
 </body>
 </html>
-

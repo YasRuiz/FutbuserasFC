@@ -5,11 +5,28 @@
   <title>Resumen de Compra</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <section>
+  <!-- ENCABEZADO -->
+  <header>
+    <img src="../img/Logo-Futbuseras-FC.jpg" alt="Logo Futbuseras FC" class="logo-header" />
     <h1>Resumen de Compra</h1>
+    <div class="pelota-wrapper">
+      <div class="pelota-container">
+        <div class="estela estela-1"></div>
+        <div class="estela estela-2"></div>
+        <div class="estela estela-3"></div>
+        <img src="../img/pelota.png" alt="Pelota" class="pelota" />
+      </div>
+    </div>
+    <p class="lema">"Gracias por apoyar a Futbuseras FC"</p>
+  </header>
+
+  <!-- RESUMEN -->
+  <section>
+    <h2>Detalle de tu compra</h2>
     <ul id="resumen"></ul>
     <p id="total"></p>
 
@@ -22,6 +39,12 @@
     <button onclick="confirmarPago()">Pagar</button>
   </section>
 
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>&copy; 2025 Futbuseras FC - Todos los derechos reservados</p>
+  </footer>
+
+  <!-- SCRIPT -->
   <script>
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     const resumen = document.getElementById("resumen");
@@ -40,12 +63,13 @@
 
     function confirmarPago() {
       const metodo = document.getElementById("metodoPago").value;
-      localStorage.setItem("metodoPago", metodo);
 
       if (carrito.length === 0) {
         alert("El carrito está vacío.");
         return;
       }
+
+      localStorage.setItem("metodoPago", metodo);
 
       if (metodo === "WebPay") {
         window.location.href = "webpay.html";
@@ -57,4 +81,3 @@
 
 </body>
 </html>
-

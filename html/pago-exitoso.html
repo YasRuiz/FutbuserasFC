@@ -5,14 +5,40 @@
   <title>Pago Exitoso</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <h1>¡Pago exitoso!</h1>
-  <p>Redirigiendo y enviando pedido por WhatsApp...</p>
 
+  <!-- ENCABEZADO -->
+  <header>
+    <img src="../img/Logo-Futbuseras-FC.jpg" alt="Logo Futbuseras FC" class="logo-header" />
+    <h1>¡Pago Exitoso!</h1>
+    <div class="pelota-wrapper">
+      <div class="pelota-container">
+        <div class="estela estela-1"></div>
+        <div class="estela estela-2"></div>
+        <div class="estela estela-3"></div>
+        <img src="../img/pelota.png" alt="Pelota" class="pelota" />
+      </div>
+    </div>
+    <p class="lema">"Gracias por apoyar a Futbuseras FC"</p>
+  </header>
+
+  <!-- MENSAJE -->
+  <section style="text-align: center;">
+    <h2>Redirigiendo y enviando pedido por WhatsApp...</h2>
+    <p>Esto puede tomar unos segundos. No cierres la ventana.</p>
+  </section>
+
+  <!-- PIE -->
+  <footer>
+    <p>&copy; 2025 Futbuseras FC - Todos los derechos reservados</p>
+  </footer>
+
+  <!-- SCRIPT -->
   <script>
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    const usuario = JSON.parse(localStorage.getItem("usuarioActivo")) || {}; // corregido
+    const usuario = JSON.parse(localStorage.getItem("usuarioActivo")) || {};
     const metodoPago = localStorage.getItem("metodoPago") || "WebPay";
     const banco = localStorage.getItem("bancoSeleccionado") || "";
     let total = 0;
@@ -42,7 +68,7 @@
     }
 
     mensaje += `%0AMedio de Pago: ${metodoPago}`;
-    if (banco) mensaje += ` (%0ABanco: ${banco})`;
+    if (banco) mensaje += `%0ABanco: ${banco}`;
 
     const numero = "56975357329";
     const url = `https://wa.me/${numero}?text=${mensaje}`;
@@ -51,9 +77,10 @@
       window.open(url, "_blank");
       localStorage.removeItem("carrito");
       setTimeout(() => {
-        window.location.href = "index.html";
+        window.location.href = "../index.html";
       }, 4000);
     };
   </script>
+
 </body>
 </html>

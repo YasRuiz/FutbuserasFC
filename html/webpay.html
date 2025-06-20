@@ -5,21 +5,45 @@
   <title>Simulación WebPay</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <h1>Selecciona tu banco</h1>
 
-  <form id="formBanco">
-    <select id="banco">
-      <option value="BancoEstado">Banco Estado</option>
-      <option value="Santander">Santander</option>
-      <option value="BCI">BCI</option>
-      <option value="Scotiabank">Scotiabank</option>
-    </select>
-    <br><br>
-    <button type="submit">Simular Pago</button>
-  </form>
+  <!-- ENCABEZADO -->
+  <header>
+    <img src="../img/Logo-Futbuseras-FC.jpg" alt="Logo Futbuseras FC" class="logo-header" />
+    <h1>Simulación WebPay</h1>
+    <div class="pelota-wrapper">
+      <div class="pelota-container">
+        <div class="estela estela-1"></div>
+        <div class="estela estela-2"></div>
+        <div class="estela estela-3"></div>
+        <img src="../img/pelota.png" alt="Pelota" class="pelota" />
+      </div>
+    </div>
+    <p class="lema">"Selecciona tu banco y finaliza tu compra"</p>
+  </header>
 
+  <!-- FORMULARIO -->
+  <section>
+    <h2>Selecciona tu banco</h2>
+    <form id="formBanco">
+      <select id="banco" required>
+        <option value="BancoEstado">Banco Estado</option>
+        <option value="Santander">Santander</option>
+        <option value="BCI">BCI</option>
+        <option value="Scotiabank">Scotiabank</option>
+      </select>
+      <button type="submit">Simular Pago</button>
+    </form>
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>&copy; 2025 Futbuseras FC - Todos los derechos reservados</p>
+  </footer>
+
+  <!-- SCRIPT -->
   <script>
     document.getElementById("formBanco").addEventListener("submit", function(e) {
       e.preventDefault();
@@ -28,6 +52,8 @@
       window.location.href = "pago-exitoso.html";
     });
   </script>
+
 </body>
 </html>
+
 
