@@ -41,17 +41,7 @@
     <p>&copy; 2025 Futbuseras FC - Todos los derechos reservados</p>
   </footer>
 
-  <!-- SCRIPT -->
-  <script>
-    document.getElementById("formBanco").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const banco = document.getElementById("banco").value;
-      localStorage.setItem("bancoSeleccionado", banco);
-      window.location.href = "pago-exitoso.html";
-    });
-  </script>
-
+  <!-- Script externo -->
+  <script src="../js/webpay.js"></script>
 </body>
 </html>
-
-
