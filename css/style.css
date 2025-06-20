@@ -109,7 +109,7 @@ header {
   left: -70px;
   width: 140px;
   height: 12px;
-  background: radial-gradient(circle, rgba(75, 7, 192, 0.4) 50%, rgba(255,255,255,0.05) 80%);
+  background: radial-gradient(circle, rgba(39, 5, 229, 0.4) 50%, rgba(17, 219, 237, 0.05) 80%);
   border-radius: 50%;
   filter: blur(6px);
   opacity: 0.8;
