@@ -12,28 +12,23 @@
 
   <!-- ENCABEZADO -->
   <header>
-  <!-- BOTÓN TIENDA en esquina superior derecha -->
-  <div class="btn-tienda-header">
-    <a href="html/tienda.html" target="_blank" class="btn-galeria">
-      🛒 Ir a la Tienda
-    </a>
-  </div>
-
-  <!-- Título y lema -->
-  <h1>Futbuseras VOY FC</h1>
-  <p class="lema">"Equipo en la cancha, líderes en la ruta"</p>
-
-  <!-- Logo debajo del lema -->
-  <img src="img/Logo-Futbuseras-FC.jpg" alt="Logo Futbuseras FC" class="logo-header" />
-
-  <!-- Pelota con estela -->
-  <div class="pelota-wrapper">
-    <div class="pelota-container">
-      <div class="estela"></div>
-      <img src="img/pelota.png" alt="Pelota" class="pelota" />
+    <div class="btn-tienda-header">
+      <a href="html/tienda.html" target="_blank" class="btn-galeria">
+        🛒 Ir a la Tienda
+      </a>
     </div>
-  </div>
-</header>
+
+    <h1>Futbuseras VOY FC</h1>
+    <p class="lema">"Equipo en la cancha, líderes en la ruta"</p>
+    <img src="img/Logo-Futbuseras-FC.jpg" alt="Logo Futbuseras FC" class="logo-header" />
+
+    <div class="pelota-wrapper">
+      <div class="pelota-container">
+        <div class="estela"></div>
+        <img src="img/pelota.png" alt="Pelota" class="pelota" />
+      </div>
+    </div>
+  </header>
 
   <!-- MENÚ -->
   <nav class="menu">
@@ -87,17 +82,16 @@
     </div>
   </section>
 
-
   <!-- GALERÍA -->
-<section id="galeria">
-  <h2>Galería de Fotos</h2>
-  <div class="carousel">
-    <img src="img/Equipo-foto-1.jpg" class="active" alt="Equipo" />
-    <img src="img/defensa.jpg" alt="Defensa" />
-    <img src="img/celebracion.jpg" alt="Celebración" />
-    <img src="img/copas.jpg" alt="Premios" />
-  </div>
-</section>
+  <section id="galeria">
+    <h2>Galería de Fotos</h2>
+    <div class="carousel">
+      <img src="img/Equipo-foto-1.jpg" class="active" alt="Equipo" />
+      <img src="img/defensa.jpg" alt="Defensa" />
+      <img src="img/celebracion.jpg" alt="Celebración" />
+      <img src="img/copas.jpg" alt="Premios" />
+    </div>
+  </section>
 
   <!-- MODAL -->
   <div id="modal" class="modal">
@@ -131,43 +125,8 @@
     <p>&copy; 2025 Futbuseras FC - Todos los derechos reservados</p>
   </footer>
 
-  <!-- SCRIPTS -->
-<script>
-  const slides = document.querySelectorAll(".carousel img");
-  let current = 0;
-  setInterval(() => {
-    slides[current].classList.remove("active");
-    current = (current + 1) % slides.length;
-    slides[current].classList.add("active");
-  }, 3000);
-
-    const toggle = document.getElementById('menu-toggle');
-    document.querySelectorAll('.menu-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        toggle.checked = false;
-      });
-    });
-    document.addEventListener('click', function (e) {
-      if (toggle.checked &&
-          !e.target.closest('.menu-links') &&
-          !e.target.closest('.menu-icon') &&
-          e.target !== toggle) {
-        toggle.checked = false;
-      }
-    });
-
-    function mostrarImagen(img) {
-      const modal = document.getElementById("modal");
-      const imgGrande = document.getElementById("img-grande");
-      modal.style.display = "flex";
-      imgGrande.src = img.src;
-      imgGrande.alt = img.alt;
-    }
-
-    function cerrarModal() {
-      document.getElementById("modal").style.display = "none";
-    }
-  </script>
-<div class="marca-agua"></div>
+  <!-- JS externo -->
+  <script src="js/main.js"></script>
+  <div class="marca-agua"></div>
 </body>
 </html>
