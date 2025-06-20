@@ -529,3 +529,16 @@ p#total {
 .iconos-sociales img:hover {
   transform: scale(1.2);
 }
+.marca-agua {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: url("../img/Logo-Futbuseras-FC.jpg") no-repeat center center;
+  background-size: 200px;
+  opacity: 0.05;
+  width: 200px;
+  height: 200px;
+  z-index: 0;
+  pointer-events: none;
+}
+
