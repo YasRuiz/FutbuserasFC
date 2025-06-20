@@ -32,6 +32,8 @@ header {
   padding: 20px;
   text-align: center;
   background: linear-gradient(90deg, #6a00f4, #00f0ff);
+  position: relative;
+  z-index: 1;
 }
 
 .logo-header {
@@ -45,11 +47,55 @@ header {
   color: var(--color-primario);
 }
 
+/* ========== PELOTA CON ESTELA BLANCA ========== */
+.pelota-wrapper {
+  position: relative;
+  height: 60px;
+  overflow: visible;
+  margin-top: -20px;
+}
+
+.pelota-container {
+  position: absolute;
+  left: -100px;
+  bottom: 0;
+  animation: rodar 6s linear infinite;
+  display: flex;
+  align-items: center;
+  z-index: 999;
+}
+
+.pelota {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.estela {
+  width: 80px;
+  height: 8px;
+  margin-right: 10px;
+  background: white;
+  border-radius: 4px;
+  opacity: 0.4;
+  box-shadow: 0 0 10px white;
+}
+
+@keyframes rodar {
+  0% {
+    transform: translateX(-120px) rotate(0deg);
+  }
+  100% {
+    transform: translateX(110vw) rotate(360deg);
+  }
+}
+
 /* ========== MENÚ HAMBURGUESA ========== */
 .menu {
   background-color: #222;
   position: relative;
   padding-bottom: 10px;
+  z-index: 2;
 }
 
 .menu-toggle {
@@ -261,10 +307,11 @@ input:focus, select:focus, textarea:focus {
 }
 
 .fotos img, .uniforme img {
-  max-width: 280px;
-  max-height: 200px;
+  width: 240px;
+  height: 160px;
+  object-fit: cover;
+  border: 4px solid white;
   border-radius: 10px;
-  border: 2px solid var(--color-secundario);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
