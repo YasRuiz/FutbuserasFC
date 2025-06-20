@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- Sección de inicio de sesión -->
   <section>
     <h2>Ingresa a tu cuenta</h2>
     <form id="form-login">
@@ -17,6 +19,7 @@
     <p><a href="#" id="recuperar-link">¿Olvidaste tu contraseña?</a></p>
   </section>
 
+  <!-- Sección para recuperar contraseña -->
   <section id="recuperar-section" style="display: none;">
     <h2>Recuperar contraseña</h2>
     <form id="form-recuperar">
@@ -26,6 +29,7 @@
     <p id="mensaje-recuperar" style="color: green; text-align: center;"></p>
   </section>
 
+  <!-- Sección para crear cuenta nueva -->
   <section>
     <h2>¿No tienes cuenta? Crea una</h2>
     <form id="form-crear-cuenta">
@@ -40,6 +44,14 @@
     <p id="mensaje-usuario" style="color: #ff00cc; text-align: center;"></p>
   </section>
 
+  <!-- Botón para regresar a la página principal -->
+  <!-- Contenedor centrado para el botón -->
+  <div class="btn-regresar">
+    <!-- Enlace que lleva de regreso al index.html -->
+    <a href="index.html">← Regresar al Inicio</a>
+  </div>
+
+  <!-- Script principal -->
   <script>
     const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
