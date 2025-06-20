@@ -82,11 +82,11 @@ header {
   left: -70px;
   width: 140px;
   height: 12px;
-  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.05) 80%);
+  background: radial-gradient(circle, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.05) 80%);
   border-radius: 50%;
   filter: blur(6px);
   opacity: 0.8;
-  animation: humoDesvanece 1.5s ease-out infinite;
+  animation: humoDesvanece 2.5s ease-out infinite;
   z-index: 9998;
 }
 
