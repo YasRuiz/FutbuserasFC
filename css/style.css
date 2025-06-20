@@ -57,12 +57,12 @@ header {
 
 .pelota-container {
   position: absolute;
+  bottom: -10px; /* más abajo, simula suelo */
   left: -100px;
-  bottom: 0;
-  animation: rodar 6s linear infinite;
   display: flex;
   align-items: center;
-  z-index: 999;
+  animation: rodar 5s linear infinite;
+  z-index: 5;
 }
 
 .pelota {
@@ -72,23 +72,35 @@ header {
 }
 
 .estela {
-  width: 120px;
-  height: 4px;
-  margin-right: 10px;
-  background: linear-gradient(to right, white, transparent);
-  border-radius: 2px;
-  opacity: 0.8;
-  box-shadow: 0 0 15px white;
-  transform: rotate(-15deg);
+  width: 100px;
+  height: 6px;
+  margin-right: 8px;
+  background: radial-gradient(circle at 0% 50%, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.1) 80%);
+  border-radius: 50%;
+  filter: blur(4px);
+  opacity: 0.6;
+  animation: humo 1s ease-in-out infinite alternate;
 }
+
 @keyframes rodar {
   0% {
-    transform: translateX(-120px) rotate(0deg);
+    transform: translateX(-100px) rotate(0deg);
   }
   100% {
-    transform: translateX(110vw) rotate(360deg);
+    transform: translateX(110vw) rotate(1440deg);
   }
 }
+@keyframes humo {
+  from {
+    transform: scaleX(1) translateY(0);
+    opacity: 0.5;
+  }
+  to {
+    transform: scaleX(1.1) translateY(-2px);
+    opacity: 0.8;
+  }
+}
+
 
 /* ========== MENÚ HAMBURGUESA ========== */
 .menu {
