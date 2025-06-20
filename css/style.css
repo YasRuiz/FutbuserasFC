@@ -72,15 +72,15 @@ header {
 }
 
 .estela {
-  width: 80px;
-  height: 8px;
+  width: 120px;
+  height: 4px;
   margin-right: 10px;
-  background: white;
-  border-radius: 4px;
-  opacity: 0.4;
-  box-shadow: 0 0 10px white;
+  background: linear-gradient(to right, white, transparent);
+  border-radius: 2px;
+  opacity: 0.8;
+  box-shadow: 0 0 15px white;
+  transform: rotate(-15deg);
 }
-
 @keyframes rodar {
   0% {
     transform: translateX(-120px) rotate(0deg);
