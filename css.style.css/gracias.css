@@ -1,52 +1,58 @@
-/* Fondo general y estilo de texto de la página de gracias */
+/* Fondo general y estilo de texto de la página de agradecimiento */
 body {
-  background-color: #111; /* Fondo negro oscuro */
-  color: #fff; /* Texto blanco */
-  font-family: 'Montserrat', sans-serif; /* Fuente elegante y legible */
-  text-align: center; /* Centra todo el contenido horizontalmente */
-  padding: 50px 20px; /* Espacio alrededor del contenido */
-  margin: 0; /* Elimina margen exterior por defecto del navegador */
+  background-color: #111;           /* Fondo negro oscuro */
+  color: #fff;                      /* Texto blanco */
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;              /* Centra el contenido */
+  padding: 50px 20px;
+  margin: 0;
+  min-height: 100vh;               /* Ocupa al menos toda la altura de la pantalla */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* Espaciado inferior entre el logo y el contenido principal */
+/* Encabezado con margen inferior */
 header {
   margin-bottom: 30px;
 }
 
-/* Estilo del logo (si lo usas en esta página) */
+/* Estilo del logo */
 .logo-header {
-  max-width: 100px; /* Tamaño máximo del logo */
+  max-width: 100px;
+  height: auto;
   display: block;
-  margin: 0 auto 20px; /* Centrado horizontal con espacio inferior */
+  margin: 0 auto 20px;
 }
 
-/* Estilo del mensaje principal (¡Gracias por contactarnos!) */
+/* Título principal */
 h1 {
-  color: #ff00cc; /* Rosa vibrante */
-  font-size: 2em; /* Tamaño grande */
+  color: #ff00cc;
+  font-size: 2em;
+  margin: 0 0 20px;
 }
 
-/* Estilo del párrafo explicativo */
+/* Párrafo explicativo */
 p {
-  font-size: 1.2em; /* Un poco más grande que el texto normal */
-  margin-bottom: 30px; /* Espacio debajo del texto */
+  font-size: 1.2em;
+  margin-bottom: 30px;
 }
 
-/* Estilo del botón para volver al inicio */
+/* Botón para volver al inicio */
 .btn-volver {
-  display: inline-block; /* Permite aplicar padding y márgenes */
-  padding: 10px 20px; /* Espaciado interior del botón */
-  background-color: #00f0ff; /* Azul claro llamativo */
-  color: #111; /* Texto oscuro para contraste */
-  border-radius: 8px; /* Bordes redondeados */
-  text-decoration: none; /* Elimina el subrayado típico de los enlaces */
-  font-weight: bold; /* Texto en negrita */
-  transition: background-color 0.3s, transform 0.3s; /* Animación suave al pasar el mouse */
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #00f0ff;
+  color: #111;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Efecto hover del botón */
+/* Efecto al pasar el mouse por encima */
 .btn-volver:hover {
-  background-color: #ff00cc; /* Cambia a rosa cuando se pasa el mouse */
-  color: #fff; /* Cambia el texto a blanco */
-  transform: scale(1.05); /* Hace que el botón se agrande ligeramente */
+  background-color: #ff00cc;
+  color: #fff;
+  transform: scale(1.05);
 }
