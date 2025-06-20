@@ -12,7 +12,7 @@
 
   <script>
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    const usuario = JSON.parse(localStorage.getItem("usuario")) || {};
+    const usuario = JSON.parse(localStorage.getItem("usuarioActivo")) || {}; // corregido
     const metodoPago = localStorage.getItem("metodoPago") || "WebPay";
     const banco = localStorage.getItem("bancoSeleccionado") || "";
     let total = 0;
