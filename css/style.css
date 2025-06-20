@@ -47,6 +47,33 @@ header {
   color: var(--color-primario);
 }
 
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 0 20px;
+}
+
+.btn-tienda {
+  background-color: var(--color-primario);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-tienda:hover {
+  background-color: var(--color-secundario);
+  transform: scale(1.05);
+}
+
+.logo-header {
+  max-height: 80px;
+  width: auto;
+}
 
 /* ========== PELOTA ========== */
 .pelota-wrapper {
