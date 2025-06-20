@@ -95,15 +95,15 @@
   </div>
 
   <!-- GALERÍA -->
-  <section id="galeria">
-    <h2>Galería de Fotos</h2>
-    <div class="fotos">
-      <img src="img/Equipo-foto-1.jpg" alt="Foto equipo" onclick="mostrarImagen(this)" />
-      <img src="img/defensa.jpg" alt="Defensa" onclick="mostrarImagen(this)" />
-      <img src="img/celebracion.jpg" alt="Gol" onclick="mostrarImagen(this)" />
-      <img src="img/copas.jpg" alt="Premios" onclick="mostrarImagen(this)" />
-    </div>
-  </section>
+<section id="galeria">
+  <h2>Galería de Fotos</h2>
+  <div class="carousel">
+    <img src="img/Equipo-foto-1.jpg" class="active" alt="Equipo" />
+    <img src="img/defensa.jpg" alt="Defensa" />
+    <img src="img/celebracion.jpg" alt="Celebración" />
+    <img src="img/copas.jpg" alt="Premios" />
+  </div>
+</section>
 
   <!-- MODAL -->
   <div id="modal" class="modal">
@@ -138,15 +138,14 @@
   </footer>
 
   <!-- SCRIPTS -->
-  <script>
-    const images = document.querySelectorAll('.carousel img');
-    let index = 0;
-    function showNextImage() {
-      images[index].classList.remove('active');
-      index = (index + 1) % images.length;
-      images[index].classList.add('active');
-    }
-    setInterval(showNextImage, 3000);
+<script>
+  const slides = document.querySelectorAll(".carousel img");
+  let current = 0;
+  setInterval(() => {
+    slides[current].classList.remove("active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("active");
+  }, 3000);
 
     const toggle = document.getElementById('menu-toggle');
     document.querySelectorAll('.menu-links a').forEach(link => {

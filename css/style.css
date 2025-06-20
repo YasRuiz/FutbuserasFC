@@ -272,7 +272,7 @@ input:focus, select:focus, textarea:focus {
   border: 2px solid var(--color-secundario);
   border-radius: 12px;
   padding: 20px;
-  max-width: 280px;
+  max-width: 240px;
   text-align: center;
   box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
   transition: transform 0.3s;
@@ -288,16 +288,33 @@ input:focus, select:focus, textarea:focus {
   margin-bottom: 10px;
 }
 
-.producto h3 {
-  color: var(--color-primario);
-}
-
-.producto p {
-  color: #fff;
-  margin-bottom: 15px;
-}
-
 /* ========== GALERÍA Y UNIFORMES ========== */
+.carousel {
+  position: relative;
+  max-width: 300px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 4px solid white;
+}
+
+.carousel img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.carousel img.active {
+  opacity: 1;
+  position: relative;
+  z-index: 1;
+}
+
 .fotos, .uniformes-container {
   display: flex;
   flex-wrap: wrap;
