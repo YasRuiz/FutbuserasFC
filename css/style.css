@@ -48,69 +48,77 @@ header {
 }
 
 /* ========== PELOTA CON ESTELA BLANCA ========== */
+/* === PELOTA CON ESTELA DE HUMO (ESTRELLA FUGAZ) === */
 .pelota-wrapper {
-  position: relative;
+  position: absolute;
+  top: 10px; /* Justo arriba del menú */
+  left: 0;
+  width: 100%;
   height: 60px;
+  pointer-events: none;
   overflow: visible;
-  margin-top: -20px;
+  z-index: 9999; /* Encima de todo */
 }
 
 .pelota-container {
   position: absolute;
-  left: -120px;
+  left: -150px;
   bottom: 0;
   display: flex;
   align-items: center;
-  animation: rodarPlano 6s linear infinite;
-  z-index: 5;
+  animation: rodarLineal 6s linear infinite;
 }
 
 .pelota {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  animation: rotarPelota 1s linear infinite;
+  animation: girarPelota 1s linear infinite;
+  z-index: 9999;
 }
 
 .estela {
   position: absolute;
-  left: 0;
-  width: 100px;
-  height: 6px;
-  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 80%);
+  left: -60px;
+  width: 120px;
+  height: 10px;
+  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.05) 80%);
   border-radius: 50%;
-  filter: blur(5px);
+  filter: blur(6px);
   opacity: 0.8;
-  animation: humoDesvanece 5s linear infinite;
-  z-index: 4;
+  animation: humoDesvanece 1.5s ease-out infinite;
+  z-index: 9998;
+}
+
+/* === Animaciones === */
+@keyframes rodarLineal {
+  0% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(110vw);
+  }
+}
+
+@keyframes girarPelota {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes humoDesvanece {
   0% {
-    transform: translateX(0);
-    opacity: 0.6;
-  }
-  30% {
-    opacity: 0.4;
-  }
-  70% {
-    opacity: 0.2;
-    transform: translateX(-50px) scaleX(1.2);
+    opacity: 0.8;
+    transform: scale(1);
   }
   100% {
     opacity: 0;
-    transform: translateX(-100px) scaleX(1.5);
+    transform: scale(1.4);
   }
 }
-@keyframes moverPelota {
-  0% { transform: translateX(-120px); }
-  100% { transform: translateX(110vw); }
-}
-@keyframes girarPelota {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
 
 /* ========== MENÚ HAMBURGUESA ========== */
 .menu {
