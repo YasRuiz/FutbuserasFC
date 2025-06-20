@@ -47,17 +47,17 @@ header {
   color: var(--color-primario);
 }
 
-/* ========== PELOTA CON ESTELA BLANCA ========== */
-/* === PELOTA CON ESTELA DE HUMO (ESTRELLA FUGAZ) === */
+
+/* ========== PELOTA ========== */
 .pelota-wrapper {
   position: absolute;
-  top: 10px; /* Justo arriba del menú */
+  top: 185px; 
   left: 0;
   width: 100%;
-  height: 60px;
+  height: 70px;
   pointer-events: none;
   overflow: visible;
-  z-index: 9999; /* Encima de todo */
+  z-index: 999;
 }
 
 .pelota-container {
@@ -70,8 +70,8 @@ header {
 }
 
 .pelota {
-  width: 40px;
-  height: 40px;
+  width: 60px; /* Más grande */
+  height: 60px;
   border-radius: 50%;
   animation: girarPelota 1s linear infinite;
   z-index: 9999;
@@ -79,9 +79,9 @@ header {
 
 .estela {
   position: absolute;
-  left: -60px;
-  width: 120px;
-  height: 10px;
+  left: -70px;
+  width: 140px;
+  height: 12px;
   background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.05) 80%);
   border-radius: 50%;
   filter: blur(6px);
@@ -90,7 +90,6 @@ header {
   z-index: 9998;
 }
 
-/* === Animaciones === */
 @keyframes rodarLineal {
   0% {
     transform: translateX(-100px);
