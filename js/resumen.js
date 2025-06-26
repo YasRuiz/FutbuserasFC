@@ -82,3 +82,39 @@ localStorage.setItem("carrito", JSON.stringify([
   { nombre: "Camiseta", cantidad: 1, precio: 15000 },
   { nombre: "Gorro", cantidad: 2, precio: 5000 }
 ]));
+function confirmarPago() {
+  const metodo = document.getElementById("metodoPago").value;
+  const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  if (!usuario || carrito.length === 0) {
+    alert("Error: No hay sesión activa o el carrito está vacío.");
+    return;
+  }
+
+  let mensaje = `Hola, soy ${usuario.nombre} ${usuario.apellido} y acabo de realizar una compra en Futbuseras FC.%0A%0A`;
+  mensaje += `🛒 *Resumen de mi compra:*%0A`;
+
+  let total = 0;
+  carrito.forEach(producto => {
+    mensaje += `• ${producto.nombre} x${producto.cantidad} = $${(producto.precio * producto.cantidad).toLocaleString()}%0A`;
+    total += producto.precio * producto.cantidad;
+  });
+
+  mensaje += `%0A💰 *Total a pagar:* $${total.toLocaleString()}`;
+  mensaje += `%0A📦 *Método de pago:* ${metodo}`;
+  mensaje += `%0A%0AGracias por apoyar a Futbuseras FC 🙌⚽`;
+
+  // Número de WhatsApp en formato internacional (sin + ni espacios)
+  const numero = "56975357329";
+  const url = `https://wa.me/${numero}?text=${mensaje}`;
+
+  // Abrir WhatsApp
+  window.open(url, "_blank");
+
+  // Redirigir a pago exitoso
+  setTimeout(() => {
+    localStorage.removeItem("carrito");
+    window.location.href = "pago-exitoso.html";
+  }, 1000);
+}
