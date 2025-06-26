@@ -86,7 +86,7 @@ document.getElementById("form-crear-cuenta").addEventListener("submit", function
 
   mensaje.textContent = "Cuenta creada con éxito. Redirigiendo al pago...";
   setTimeout(() => {
-    window.location.href = "pago.html";
+    window.location.href = "resumen.html";
   }, 1500);
 });
 
