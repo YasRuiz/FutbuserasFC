@@ -83,12 +83,18 @@ localStorage.setItem("carrito", JSON.stringify([
   { nombre: "Gorro", cantidad: 2, precio: 5000 }
 ]));
 function confirmarPago() {
+  const btnPagar = document.getElementById("btnPagar");
+  btnPagar.disabled = true;
+  btnPagar.textContent = "Procesando...";
+
   const metodo = document.getElementById("metodoPago").value;
   const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
   if (!usuario || carrito.length === 0) {
     alert("Error: No hay sesión activa o el carrito está vacío.");
+    btnPagar.disabled = false;
+    btnPagar.textContent = "Pagar";
     return;
   }
 
@@ -105,16 +111,14 @@ function confirmarPago() {
   mensaje += `%0A📦 *Método de pago:* ${metodo}`;
   mensaje += `%0A%0AGracias por apoyar a Futbuseras FC 🙌⚽`;
 
-  // Número de WhatsApp en formato internacional (sin + ni espacios)
   const numero = "56975357329";
   const url = `https://wa.me/${numero}?text=${mensaje}`;
 
-  // Abrir WhatsApp
   window.open(url, "_blank");
 
-  // Redirigir a pago exitoso
   setTimeout(() => {
     localStorage.removeItem("carrito");
     window.location.href = "pago-exitoso.html";
   }, 1000);
+}
 }
