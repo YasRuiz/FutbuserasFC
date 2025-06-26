@@ -24,6 +24,8 @@
 
   <!-- RESUMEN -->
   <section>
+    <div id="saludo"></div>
+
     <h2>Detalle de tu compra</h2>
     <ul id="resumen"></ul>
     <p id="total"></p>
@@ -34,10 +36,9 @@
       <option value="Transferencia">Transferencia Bancaria</option>
     </select>
 
-    <button onclick="confirmarPago()">Pagar</button>
+    <button id="btnPagar" onclick="confirmarPago()">Pagar</button>
+    <button onclick="cerrarSesion()">Cerrar sesión</button>
   </section>
-   
-   <button onclick="cerrarSesion()">Cerrar sesión</button>
 
   <!-- PIE DE PÁGINA -->
   <footer>
@@ -46,7 +47,5 @@
 
   <!-- Script externo -->
   <script src="../js/resumen.js"></script>
-
 </body>
 </html>
-
