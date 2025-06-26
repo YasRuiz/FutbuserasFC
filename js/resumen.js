@@ -74,3 +74,11 @@ function confirmarPago() {
   localStorage.removeItem("carrito"); // limpia el carrito
   window.location.href = "tienda.html"; // redirige después del pago
 }
+localStorage.setItem("usuarioActivo", JSON.stringify({
+  nombre: "Ana", apellido: "Pérez", correo: "ana@correo.com"
+}));
+
+localStorage.setItem("carrito", JSON.stringify([
+  { nombre: "Camiseta", cantidad: 1, precio: 15000 },
+  { nombre: "Gorro", cantidad: 2, precio: 5000 }
+]));
