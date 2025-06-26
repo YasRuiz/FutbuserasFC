@@ -36,7 +36,7 @@ document.getElementById("form-login").addEventListener("submit", function (e) {
   const usuario = usuarios.find(u => u.correo === email && u.clave === clave);
   if (usuario) {
     localStorage.setItem("usuarioActivo", JSON.stringify(usuario));
-    window.location.href = "pago.html";
+    window.location.href = "resumen.html";
   } else {
     alert("Correo o contraseña incorrectos.");
   }
